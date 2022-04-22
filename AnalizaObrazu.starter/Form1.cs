@@ -141,7 +141,7 @@ namespace AnalizaObrazu
            byte prog = Efekty.WyznaczProgowanieOtsu(_bitmapa);
             Bitmap bitmapaCzarnoBiala = Efekty.Progowanie(_bitmapa, prog);
 
-            Bitmap bitmapaWynikowa = Efekty.Erozja(bitmapaCzarnoBiala, 2);
+            Bitmap bitmapaWynikowa = Efekty.Erozja(bitmapaCzarnoBiala, 1);
             this.mainPictureBox.Image = bitmapaWynikowa;
         }
 
@@ -150,7 +150,34 @@ namespace AnalizaObrazu
             byte prog = Efekty.WyznaczProgowanieOtsu(_bitmapa);
             Bitmap bitmapaCzarnoBiala = Efekty.Progowanie(_bitmapa, prog);
 
-            Bitmap bitmapaWynikowa = Efekty.Dylatacja(bitmapaCzarnoBiala, 2);
+            Bitmap bitmapaWynikowa = Efekty.Dylatacja(bitmapaCzarnoBiala, 1);
+            this.mainPictureBox.Image = bitmapaWynikowa;
+        }
+
+        private void erozjaDylatacjaToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            byte prog = Efekty.WyznaczProgowanieOtsu(_bitmapa);
+            Bitmap bitmapaCzarnoBiala = Efekty.Progowanie(_bitmapa, prog);
+            Bitmap bitmapaWynikowa = Efekty.Erozja(bitmapaCzarnoBiala, 1);
+            bitmapaWynikowa = Efekty.Dylatacja(bitmapaWynikowa, 1);
+            this.mainPictureBox.Image = bitmapaWynikowa;
+        }
+
+        private void dylatacjaErozjaToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            byte prog = Efekty.WyznaczProgowanieOtsu(_bitmapa);
+            Bitmap bitmapaCzarnoBiala = Efekty.Progowanie(_bitmapa, prog);
+            Bitmap bitmapaWynikowa = Efekty.Dylatacja(bitmapaCzarnoBiala, 1);
+            bitmapaWynikowa = Efekty.Erozja(bitmapaWynikowa, 1);
+            this.mainPictureBox.Image = bitmapaWynikowa;
+        }
+
+        private void konturWewnętrznyToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            byte prog = Efekty.WyznaczProgowanieOtsu(_bitmapa);
+            Bitmap bitmapaCzarnoBiala = Efekty.Progowanie(_bitmapa, prog);
+
+            Bitmap bitmapaWynikowa = Efekty.KonturWewnetrzny(bitmapaCzarnoBiala, 1);
             this.mainPictureBox.Image = bitmapaWynikowa;
         }
     }

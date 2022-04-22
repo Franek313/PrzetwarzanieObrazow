@@ -693,6 +693,70 @@ namespace AnalizaObrazu
 
             return bitmapaWy;
         }
+
+        public static Bitmap KonturWewnetrzny(Bitmap bitmapaWe, int okno)
+        {
+            int wysokosc = bitmapaWe.Height;
+            int szerokosc = bitmapaWe.Width;
+
+
+            Bitmap bitmapaWy = new Bitmap(szerokosc, wysokosc, PixelFormat.Format24bppRgb);
+
+            BitmapData bmWeData = bitmapaWe.LockBits(new Rectangle(0, 0, szerokosc, wysokosc), ImageLockMode.ReadWrite, PixelFormat.Format24bppRgb);
+            BitmapData bmWyData = bitmapaWy.LockBits(new Rectangle(0, 0, szerokosc, wysokosc), ImageLockMode.ReadWrite, PixelFormat.Format24bppRgb);
+            int strideWe = bmWeData.Stride;
+            int strideWy = bmWeData.Stride;
+            IntPtr scanWe = bmWeData.Scan0;
+            IntPtr scanWy = bmWyData.Scan0;
+
+            Rgb tlo = new Rgb() { r = 0, g = 0, b = 0 };
+            Rgb obiekt = new Rgb() { r = 255, g = 255, b = 255 };
+
+            unsafe
+            {
+                for (int y = okno; y < wysokosc - okno; y++)
+                {
+                    byte* pWe = (byte*)(void*)scanWe + y * strideWe;
+                    byte* pWy = (byte*)(void*)scanWy + y * strideWy;
+                    for (int x = okno; x < szerokosc - okno; x++)
+                    {
+                        Rgb pikselWejsciowy = ((Rgb*)pWe)[x];
+                        Rgb pikselWynikowy;
+
+                        bool czyWarunekSpelniony = true;
+                        for (int yi = y - okno; yi <= y + okno; yi++)
+                        {
+                            pWe = (byte*)(void*)scanWe + yi * strideWe;
+                            for (int xi = x - okno; xi <= x + okno; xi++)
+                            {
+                                Rgb pikselOtoczenia = ((Rgb*)pWe)[xi];
+
+                                czyWarunekSpelniony = czyWarunekSpelniony &&
+                                pikselOtoczenia.r == obiekt.r &&
+                                pikselOtoczenia.g == obiekt.g &&
+                                pikselOtoczenia.b == obiekt.b;
+                            }
+                        }
+
+                        if (czyWarunekSpelniony == true)
+                        {
+                            pikselWynikowy = obiekt;
+                        }
+                        else
+                        {
+                            pikselWynikowy = tlo;
+                        }
+
+                        ((Rgb*)pWy)[x] = pikselWynikowy;
+
+                    }
+                }
+            }
+            bitmapaWy.UnlockBits(bmWyData);
+            bitmapaWe.UnlockBits(bmWeData);
+
+            return bitmapaWy;
+        }
     }
 
 

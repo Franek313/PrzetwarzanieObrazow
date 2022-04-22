@@ -60,6 +60,10 @@
             this.mainPictureBox = new System.Windows.Forms.PictureBox();
             this.openFileDialog = new System.Windows.Forms.OpenFileDialog();
             this.dylatacjaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.erozjaDylatacjaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.dylatacjaErozjaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.konturWewnętrznyToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.konturZewnętrznyToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.mainMenu.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.mainPictureBox)).BeginInit();
             this.SuspendLayout();
@@ -279,7 +283,11 @@
             // 
             this.operacjeMorfologiczneToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.erozjaToolStripMenuItem,
-            this.dylatacjaToolStripMenuItem});
+            this.dylatacjaToolStripMenuItem,
+            this.erozjaDylatacjaToolStripMenuItem,
+            this.dylatacjaErozjaToolStripMenuItem,
+            this.konturWewnętrznyToolStripMenuItem,
+            this.konturZewnętrznyToolStripMenuItem});
             this.operacjeMorfologiczneToolStripMenuItem.Name = "operacjeMorfologiczneToolStripMenuItem";
             this.operacjeMorfologiczneToolStripMenuItem.Size = new System.Drawing.Size(201, 22);
             this.operacjeMorfologiczneToolStripMenuItem.Text = "Operacje Morfologiczne";
@@ -316,6 +324,33 @@
             this.dylatacjaToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.dylatacjaToolStripMenuItem.Text = "Dylatacja";
             this.dylatacjaToolStripMenuItem.Click += new System.EventHandler(this.dylatacjaToolStripMenuItem_Click);
+            // 
+            // erozjaDylatacjaToolStripMenuItem
+            // 
+            this.erozjaDylatacjaToolStripMenuItem.Name = "erozjaDylatacjaToolStripMenuItem";
+            this.erozjaDylatacjaToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.erozjaDylatacjaToolStripMenuItem.Text = "Erozja->Dylatacja";
+            this.erozjaDylatacjaToolStripMenuItem.Click += new System.EventHandler(this.erozjaDylatacjaToolStripMenuItem_Click);
+            // 
+            // dylatacjaErozjaToolStripMenuItem
+            // 
+            this.dylatacjaErozjaToolStripMenuItem.Name = "dylatacjaErozjaToolStripMenuItem";
+            this.dylatacjaErozjaToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.dylatacjaErozjaToolStripMenuItem.Text = "Dylatacja->Erozja";
+            this.dylatacjaErozjaToolStripMenuItem.Click += new System.EventHandler(this.dylatacjaErozjaToolStripMenuItem_Click);
+            // 
+            // konturWewnętrznyToolStripMenuItem
+            // 
+            this.konturWewnętrznyToolStripMenuItem.Name = "konturWewnętrznyToolStripMenuItem";
+            this.konturWewnętrznyToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.konturWewnętrznyToolStripMenuItem.Text = "Kontur Wewnętrzny";
+            this.konturWewnętrznyToolStripMenuItem.Click += new System.EventHandler(this.konturWewnętrznyToolStripMenuItem_Click);
+            // 
+            // konturZewnętrznyToolStripMenuItem
+            // 
+            this.konturZewnętrznyToolStripMenuItem.Name = "konturZewnętrznyToolStripMenuItem";
+            this.konturZewnętrznyToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.konturZewnętrznyToolStripMenuItem.Text = "Kontur Zewnętrzny";
             // 
             // Form1
             // 
@@ -369,6 +404,10 @@
         private System.Windows.Forms.ToolStripMenuItem operacjeMorfologiczneToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem erozjaToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem dylatacjaToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem erozjaDylatacjaToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem dylatacjaErozjaToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem konturWewnętrznyToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem konturZewnętrznyToolStripMenuItem;
     }
 }
 
