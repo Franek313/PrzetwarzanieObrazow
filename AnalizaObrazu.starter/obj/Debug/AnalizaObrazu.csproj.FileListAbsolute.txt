@@ -98,3 +98,12 @@ C:\Users\student\Downloads\PrzetwarzanieObrazow-master (1)\PrzetwarzanieObrazow-
 C:\Users\student\Downloads\PrzetwarzanieObrazow-master (1)\PrzetwarzanieObrazow-master\AnalizaObrazuFB.starter\obj\Debug\AnalizaObrazu.csproj.CoreCompileInputs.cache
 C:\Users\student\Downloads\PrzetwarzanieObrazow-master (1)\PrzetwarzanieObrazow-master\AnalizaObrazuFB.starter\obj\Debug\AnalizaObrazu.exe
 C:\Users\student\Downloads\PrzetwarzanieObrazow-master (1)\PrzetwarzanieObrazow-master\AnalizaObrazuFB.starter\obj\Debug\AnalizaObrazu.pdb
+C:\Users\student\Downloads\PrzetwarzanieObrazow-master\AnalizaObrazu.starter\obj\Debug\AnalizaObrazu.csprojAssemblyReference.cache
+C:\Users\student\Downloads\PrzetwarzanieObrazow-master\AnalizaObrazu.starter\obj\Debug\AnalizaObrazu.Form1.resources
+C:\Users\student\Downloads\PrzetwarzanieObrazow-master\AnalizaObrazu.starter\obj\Debug\AnalizaObrazu.csproj.GenerateResource.cache
+C:\Users\student\Downloads\PrzetwarzanieObrazow-master\AnalizaObrazu.starter\obj\Debug\AnalizaObrazu.csproj.CoreCompileInputs.cache
+C:\Users\student\Downloads\PrzetwarzanieObrazow-master\AnalizaObrazu.starter\obj\Debug\AnalizaObrazu.exe
+C:\Users\student\Downloads\PrzetwarzanieObrazow-master\AnalizaObrazu.starter\obj\Debug\AnalizaObrazu.pdb
+C:\Users\student\Downloads\PrzetwarzanieObrazow-master\AnalizaObrazu.starter\bin\Debug\AnalizaObrazu.exe.config
+C:\Users\student\Downloads\PrzetwarzanieObrazow-master\AnalizaObrazu.starter\bin\Debug\AnalizaObrazu.exe
+C:\Users\student\Downloads\PrzetwarzanieObrazow-master\AnalizaObrazu.starter\bin\Debug\AnalizaObrazu.pdb

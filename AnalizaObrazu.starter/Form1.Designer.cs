@@ -54,11 +54,12 @@
             this.progowanie150ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.progowanie200ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.progowanie50KeepToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.operacjeMorfologiczneToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.erozjaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.edycjaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.mainPictureBox = new System.Windows.Forms.PictureBox();
             this.openFileDialog = new System.Windows.Forms.OpenFileDialog();
-            this.operacjeMorfologiczneToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.erozjaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.dylatacjaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.mainMenu.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.mainPictureBox)).BeginInit();
             this.SuspendLayout();
@@ -91,25 +92,25 @@
             // otworzToolStripMenuItem
             // 
             this.otworzToolStripMenuItem.Name = "otworzToolStripMenuItem";
-            this.otworzToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.otworzToolStripMenuItem.Size = new System.Drawing.Size(118, 22);
             this.otworzToolStripMenuItem.Text = "Otwórz";
             this.otworzToolStripMenuItem.Click += new System.EventHandler(this.otworzToolStripMenuItem_Click);
             // 
             // zapiszToolStripMenuItem
             // 
             this.zapiszToolStripMenuItem.Name = "zapiszToolStripMenuItem";
-            this.zapiszToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.zapiszToolStripMenuItem.Size = new System.Drawing.Size(118, 22);
             this.zapiszToolStripMenuItem.Text = "Zapisz";
             // 
             // toolStripSeparator1
             // 
             this.toolStripSeparator1.Name = "toolStripSeparator1";
-            this.toolStripSeparator1.Size = new System.Drawing.Size(177, 6);
+            this.toolStripSeparator1.Size = new System.Drawing.Size(115, 6);
             // 
             // zakończToolStripMenuItem
             // 
             this.zakończToolStripMenuItem.Name = "zakończToolStripMenuItem";
-            this.zakończToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.zakończToolStripMenuItem.Size = new System.Drawing.Size(118, 22);
             this.zakończToolStripMenuItem.Text = "Zakończ";
             // 
             // efektyToolStripMenuItem
@@ -274,6 +275,22 @@
             this.progowanie50KeepToolStripMenuItem.Text = "Progowanie 50 Keep";
             this.progowanie50KeepToolStripMenuItem.Click += new System.EventHandler(this.progowanie50KeepToolStripMenuItem_Click);
             // 
+            // operacjeMorfologiczneToolStripMenuItem
+            // 
+            this.operacjeMorfologiczneToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.erozjaToolStripMenuItem,
+            this.dylatacjaToolStripMenuItem});
+            this.operacjeMorfologiczneToolStripMenuItem.Name = "operacjeMorfologiczneToolStripMenuItem";
+            this.operacjeMorfologiczneToolStripMenuItem.Size = new System.Drawing.Size(201, 22);
+            this.operacjeMorfologiczneToolStripMenuItem.Text = "Operacje Morfologiczne";
+            // 
+            // erozjaToolStripMenuItem
+            // 
+            this.erozjaToolStripMenuItem.Name = "erozjaToolStripMenuItem";
+            this.erozjaToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.erozjaToolStripMenuItem.Text = "Erozja";
+            this.erozjaToolStripMenuItem.Click += new System.EventHandler(this.ErozjaToolStripMenuItem_Click);
+            // 
             // edycjaToolStripMenuItem
             // 
             this.edycjaToolStripMenuItem.Name = "edycjaToolStripMenuItem";
@@ -293,20 +310,12 @@
             // 
             this.openFileDialog.Filter = "Bitmap (*.bmp)|*.bmp|Wszystkie pliki (*.*)|*.*";
             // 
-            // operacjeMorfologiczneToolStripMenuItem
+            // dylatacjaToolStripMenuItem
             // 
-            this.operacjeMorfologiczneToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.erozjaToolStripMenuItem});
-            this.operacjeMorfologiczneToolStripMenuItem.Name = "operacjeMorfologiczneToolStripMenuItem";
-            this.operacjeMorfologiczneToolStripMenuItem.Size = new System.Drawing.Size(201, 22);
-            this.operacjeMorfologiczneToolStripMenuItem.Text = "Operacje Morfologiczne";
-            // 
-            // erozjaToolStripMenuItem
-            // 
-            this.erozjaToolStripMenuItem.Name = "erozjaToolStripMenuItem";
-            this.erozjaToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
-            this.erozjaToolStripMenuItem.Text = "Erozja";
-            this.erozjaToolStripMenuItem.Click += new System.EventHandler(this.ErozjaToolStripMenuItem_Click);
+            this.dylatacjaToolStripMenuItem.Name = "dylatacjaToolStripMenuItem";
+            this.dylatacjaToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.dylatacjaToolStripMenuItem.Text = "Dylatacja";
+            this.dylatacjaToolStripMenuItem.Click += new System.EventHandler(this.dylatacjaToolStripMenuItem_Click);
             // 
             // Form1
             // 
@@ -359,6 +368,7 @@
         private System.Windows.Forms.ToolStripMenuItem progowanie50KeepToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem operacjeMorfologiczneToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem erozjaToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem dylatacjaToolStripMenuItem;
     }
 }
 

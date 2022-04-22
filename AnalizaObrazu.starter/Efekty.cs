@@ -65,8 +65,8 @@ namespace AnalizaObrazu
 
             Bitmap bitmapaWy = new Bitmap(szerokosc, wysokosc, PixelFormat.Format24bppRgb);
 
-            BitmapData bmWeData = bitmapaWe.LockBits(new Rectangle(0, 0, szerokosc, wysokosc),ImageLockMode.ReadWrite, PixelFormat.Format24bppRgb);
-            BitmapData bmWyData = bitmapaWy.LockBits(new Rectangle(0, 0, szerokosc, wysokosc),ImageLockMode.ReadWrite, PixelFormat.Format24bppRgb);
+            BitmapData bmWeData = bitmapaWe.LockBits(new Rectangle(0, 0, szerokosc, wysokosc), ImageLockMode.ReadWrite, PixelFormat.Format24bppRgb);
+            BitmapData bmWyData = bitmapaWy.LockBits(new Rectangle(0, 0, szerokosc, wysokosc), ImageLockMode.ReadWrite, PixelFormat.Format24bppRgb);
 
             int strideWe = bmWeData.Stride;
             int strideWy = bmWyData.Stride;
@@ -97,7 +97,7 @@ namespace AnalizaObrazu
             return bitmapaWy;
         }
 
- 
+
 
         public static Bitmap Jasnosc(Bitmap bitmapaWe)
         {
@@ -137,7 +137,7 @@ namespace AnalizaObrazu
             return bitmapaWy;
         }
 
-        
+
 
         public static Bitmap JasnoscWazona(Bitmap bitmapaWe)
         {
@@ -178,7 +178,7 @@ namespace AnalizaObrazu
             return bitmapaWy;
         }
 
-        public static Bitmap ZmianaJasnosci(Bitmap bitmapaWe,int p)
+        public static Bitmap ZmianaJasnosci(Bitmap bitmapaWe, int p)
         {
             int wysokosc = bitmapaWe.Height;
             int szerokosc = bitmapaWe.Width;
@@ -274,19 +274,19 @@ namespace AnalizaObrazu
             int szerokosc = bitmapaWe.Width;
             BitmapData bmWeData = bitmapaWe.LockBits(new Rectangle(0, 0, szerokosc, wysokosc),
                 ImageLockMode.ReadWrite, PixelFormat.Format24bppRgb);
-            int strideWe = bmWeData.Stride; 
+            int strideWe = bmWeData.Stride;
             IntPtr scanWe = bmWeData.Scan0;
-            int[] histogram = new int[256]; 
-            unsafe { 
-                for (int y = 0; y < wysokosc; y++) { 
-                    byte* pWe = (byte*)(void*)scanWe + y * strideWe; 
+            int[] histogram = new int[256];
+            unsafe {
+                for (int y = 0; y < wysokosc; y++) {
+                    byte* pWe = (byte*)(void*)scanWe + y * strideWe;
                     for (int x = 0; x < szerokosc; x++) {
                         byte jasnosc = ((Rgb*)pWe)[x].Jasnosc().r;
                         histogram[jasnosc]++;
-                    } 
-                } 
+                    }
+                }
             }
-            bitmapaWe.UnlockBits(bmWeData); 
+            bitmapaWe.UnlockBits(bmWeData);
             return histogram;
         }
         private static Bitmap NarysujHistogram(int[] histogram) {
@@ -304,58 +304,58 @@ namespace AnalizaObrazu
             //} 
             //return histogramBitmap;
 
-           
-                Bitmap histogramBitmap = new Bitmap(256, 256, PixelFormat.Format24bppRgb);
-                Graphics g = Graphics.FromImage(histogramBitmap);
-                int max = 0; 
-                for (int i = 0; i < 256; i++) {
-                    if (histogram[i] > max) { 
-                        max = histogram[i]; 
-                    } 
+
+            Bitmap histogramBitmap = new Bitmap(256, 256, PixelFormat.Format24bppRgb);
+            Graphics g = Graphics.FromImage(histogramBitmap);
+            int max = 0;
+            for (int i = 0; i < 256; i++) {
+                if (histogram[i] > max) {
+                    max = histogram[i];
                 }
-                for (int i = 0; i < 256; i++){
-                    Pen pen = new Pen(Color.FromArgb(255 - i, 0, 0)); 
-                    g.DrawLine(pen, i, 255, i, 255 - ((255 * histogram[i]) / max));
-                    pen = new Pen(Color.FromArgb(i, i, i));
-                    g.DrawLine(pen, i, 255 - ((255 * histogram[i]) / max), i, 0); 
-                 } 
-                return histogramBitmap; 
+            }
+            for (int i = 0; i < 256; i++) {
+                Pen pen = new Pen(Color.FromArgb(255 - i, 0, 0));
+                g.DrawLine(pen, i, 255, i, 255 - ((255 * histogram[i]) / max));
+                pen = new Pen(Color.FromArgb(i, i, i));
+                g.DrawLine(pen, i, 255 - ((255 * histogram[i]) / max), i, 0);
+            }
+            return histogramBitmap;
         }
         public static Bitmap ZmianaJasnosciLut(Bitmap bitmapaWe, int param) {
             int wysokosc = bitmapaWe.Height;
-            int szerokosc = bitmapaWe.Width; 
-            Bitmap bitmapaWy = new Bitmap(szerokosc, wysokosc, PixelFormat.Format24bppRgb); 
+            int szerokosc = bitmapaWe.Width;
+            Bitmap bitmapaWy = new Bitmap(szerokosc, wysokosc, PixelFormat.Format24bppRgb);
             BitmapData bmWeData = bitmapaWe.LockBits(new Rectangle(0, 0, szerokosc, wysokosc), ImageLockMode.ReadWrite, PixelFormat.Format24bppRgb);
             BitmapData bmWyData = bitmapaWy.LockBits(new Rectangle(0, 0, szerokosc, wysokosc), ImageLockMode.ReadWrite, PixelFormat.Format24bppRgb);
-            int strideWe = bmWeData.Stride; 
-            int strideWy = bmWeData.Stride; 
-            IntPtr scanWe = bmWeData.Scan0; 
+            int strideWe = bmWeData.Stride;
+            int strideWy = bmWeData.Stride;
+            IntPtr scanWe = bmWeData.Scan0;
             IntPtr scanWy = bmWyData.Scan0;
 
-            byte[] LUT = new byte[256]; 
-            for (int i = 0; i < 256; i++) { 
+            byte[] LUT = new byte[256];
+            for (int i = 0; i < 256; i++) {
                 int rob = i + param;
-                if (rob < 0) rob = 0; 
-                if (rob > 255) rob = 255; 
-                LUT[i] = (byte)(rob); 
-            } 
-            unsafe { 
-                for (int y = 0; y < wysokosc; y++) 
+                if (rob < 0) rob = 0;
+                if (rob > 255) rob = 255;
+                LUT[i] = (byte)(rob);
+            }
+            unsafe {
+                for (int y = 0; y < wysokosc; y++)
                 {
-                    byte* pWe = (byte*)(void*)scanWe + y * strideWe; 
+                    byte* pWe = (byte*)(void*)scanWe + y * strideWe;
                     byte* pWy = (byte*)(void*)scanWy + y * strideWy;
-                    for (int x = 0; x < szerokosc; x++) { 
+                    for (int x = 0; x < szerokosc; x++) {
                         Rgb pikselWejsciowy = ((Rgb*)pWe)[x];
-                        Rgb pikselWynikowy; 
-                        pikselWynikowy.r = LUT[pikselWejsciowy.r]; 
-                        pikselWynikowy.g = LUT[pikselWejsciowy.g]; 
-                        pikselWynikowy.b = LUT[pikselWejsciowy.b]; 
-                        ((Rgb*)pWy)[x] = pikselWynikowy; 
-                    } 
-                } 
-            } 
-            bitmapaWy.UnlockBits(bmWyData); 
-            bitmapaWe.UnlockBits(bmWeData); 
+                        Rgb pikselWynikowy;
+                        pikselWynikowy.r = LUT[pikselWejsciowy.r];
+                        pikselWynikowy.g = LUT[pikselWejsciowy.g];
+                        pikselWynikowy.b = LUT[pikselWejsciowy.b];
+                        ((Rgb*)pWy)[x] = pikselWynikowy;
+                    }
+                }
+            }
+            bitmapaWy.UnlockBits(bmWyData);
+            bitmapaWe.UnlockBits(bmWeData);
 
             return bitmapaWy; }
 
@@ -380,11 +380,11 @@ namespace AnalizaObrazu
             for (int i = 0; i < 256; i++)
             {
                 int suma = 0;
-                for(int j = 0; j<=i; j++)
+                for (int j = 0; j <= i; j++)
                 {
                     suma += histogram[j];
                 }
-                dystrybuanta[i] = suma / (double)(wysokosc*szerokosc);
+                dystrybuanta[i] = suma / (double)(wysokosc * szerokosc);
             }
 
             byte[] LUT = new byte[256];
@@ -432,7 +432,7 @@ namespace AnalizaObrazu
             IntPtr scanWy = bmWyData.Scan0;
 
             Rgb black = new Rgb() { r = 0, g = 0, b = 0 };
-            Rgb white  = new Rgb() { r = 255, g = 255, b = 255 };
+            Rgb white = new Rgb() { r = 255, g = 255, b = 255 };
 
             unsafe
             {
@@ -558,7 +558,7 @@ namespace AnalizaObrazu
             return bitmapaWy;
         }
 
-        public static Bitmap Erozja(Bitmap bitmapaWe)
+        public static Bitmap Erozja(Bitmap bitmapaWe, int okno)
         {
             int wysokosc = bitmapaWe.Height;
             int szerokosc = bitmapaWe.Width;
@@ -578,26 +578,26 @@ namespace AnalizaObrazu
 
             unsafe
             {
-                for (int y = 1; y < wysokosc-1; y++)
+                for (int y = okno; y < wysokosc - okno; y++)
                 {
                     byte* pWe = (byte*)(void*)scanWe + y * strideWe;
                     byte* pWy = (byte*)(void*)scanWy + y * strideWy;
-                    for (int x = 1; x < szerokosc-1; x++)
+                    for (int x = okno; x < szerokosc - okno; x++)
                     {
                         Rgb pikselWejsciowy = ((Rgb*)pWe)[x];
                         Rgb pikselWynikowy;
 
                         bool czyWarunekSpelniony = true;
-                        for(int yi = y-1; yi<=y+1; yi++)
+                        for (int yi = y - okno; yi <= y + okno; yi++)
                         {
                             pWe = (byte*)(void*)scanWe + yi * strideWe;
-                            for (int xi = x - 1; xi <= x + 1; xi++)
+                            for (int xi = x - okno; xi <= x + okno; xi++)
                             {
                                 Rgb pikselOtoczenia = ((Rgb*)pWe)[xi];
 
                                 czyWarunekSpelniony = czyWarunekSpelniony &&
-                                pikselOtoczenia.r == obiekt.r && 
-                                pikselOtoczenia.g == obiekt.g && 
+                                pikselOtoczenia.r == obiekt.r &&
+                                pikselOtoczenia.g == obiekt.g &&
                                 pikselOtoczenia.b == obiekt.b;
                             }
                         }
@@ -616,6 +616,78 @@ namespace AnalizaObrazu
                     }
                 }
             }
+            bitmapaWy.UnlockBits(bmWyData);
+            bitmapaWe.UnlockBits(bmWeData);
+
+            return bitmapaWy;
+        }
+
+        public static Bitmap Dylatacja(Bitmap bitmapaWe, int okno)
+        {
+            int wysokosc = bitmapaWe.Height;
+            int szerokosc = bitmapaWe.Width;
+
+
+            Bitmap bitmapaWy = new Bitmap(szerokosc, wysokosc, PixelFormat.Format24bppRgb);
+
+            BitmapData bmWeData = bitmapaWe.LockBits(new Rectangle(0, 0, szerokosc, wysokosc), ImageLockMode.ReadWrite, PixelFormat.Format24bppRgb);
+            BitmapData bmWyData = bitmapaWy.LockBits(new Rectangle(0, 0, szerokosc, wysokosc), ImageLockMode.ReadWrite, PixelFormat.Format24bppRgb);
+            int strideWe = bmWeData.Stride;
+            int strideWy = bmWeData.Stride;
+            IntPtr scanWe = bmWeData.Scan0;
+            IntPtr scanWy = bmWyData.Scan0;
+
+            Rgb tlo = new Rgb() { r = 0, g = 0, b = 0 };
+            Rgb obiekt = new Rgb() { r = 255, g = 255, b = 255 };
+
+            unsafe
+            {
+                for (int y = okno; y < wysokosc - okno; y++)
+                {
+                    byte* pWe = (byte*)(void*)scanWe + y * strideWe;
+                    byte* pWy = (byte*)(void*)scanWy + y * strideWy;
+                    for (int x = okno; x < szerokosc - okno; x++)
+                    {
+                        Rgb pikselWejsciowy = ((Rgb*)pWe)[x];
+                        Rgb pikselWynikowy;
+
+                        bool czyWarunekSpelniony =
+                                pikselWejsciowy.r == tlo.r &&
+                                pikselWejsciowy.g == tlo.g &&
+                                pikselWejsciowy.b == tlo.b;
+
+                        if (czyWarunekSpelniony)
+                        {
+                            czyWarunekSpelniony = false;
+                            for (int yi = y - okno; yi <= y + okno; yi++)
+                            {
+                                pWe = (byte*)(void*)scanWe + yi * strideWe;
+                                for (int xi = x - okno; xi <= x + okno; xi++)
+                                {
+                                    Rgb pikselOtoczenia = ((Rgb*)pWe)[xi];
+
+                                    czyWarunekSpelniony = czyWarunekSpelniony ||
+                                    (pikselOtoczenia.r == obiekt.r &&
+                                    pikselOtoczenia.g == obiekt.g &&
+                                    pikselOtoczenia.b == obiekt.b);
+                                }
+                            }
+                            if (czyWarunekSpelniony) pikselWynikowy = obiekt;
+                            else pikselWynikowy = tlo;
+
+
+                        }
+                        else
+                        {
+                            pikselWynikowy = obiekt;
+                        }
+
+                        ((Rgb*)pWy)[x] = pikselWynikowy;
+                    }
+
+                }
+            }
+        
             bitmapaWy.UnlockBits(bmWyData);
             bitmapaWe.UnlockBits(bmWeData);
 
