@@ -1,0 +1,115 @@
+<Configuration>
+  <SettingsComponent>
+    <string />
+    <integer />
+    <boolean>
+      <setting name="SolutionAnalysisEnabled">False</setting>
+    </boolean>
+  </SettingsComponent>
+  <NAntValidationSettings>
+    <NAntPath value="" />
+  </NAntValidationSettings>
+  <RecentFiles>
+    <RecentFiles>
+      <File id="BB56E49D-A522-4E3F-B11D-4643EC5A25A1/f:Form1.Designer.cs" caret="8909" fromTop="16" />
+      <File id="BB56E49D-A522-4E3F-B11D-4643EC5A25A1/f:Efekty.cs" caret="868" fromTop="17" />
+      <File id="BB56E49D-A522-4E3F-B11D-4643EC5A25A1/f:Form1.cs" caret="2205" fromTop="64" />
+    </RecentFiles>
+    <RecentEdits>
+      <File id="BB56E49D-A522-4E3F-B11D-4643EC5A25A1/f:Form1.cs" caret="987" fromTop="11" />
+      <File id="BB56E49D-A522-4E3F-B11D-4643EC5A25A1/f:Form1.Designer.cs" caret="8909" fromTop="6" />
+      <File id="BB56E49D-A522-4E3F-B11D-4643EC5A25A1/f:Efekty.cs" caret="1053" fromTop="9" />
+      <File id="BB56E49D-A522-4E3F-B11D-4643EC5A25A1/f:Efekty.cs" caret="1447" fromTop="8" />
+      <File id="BB56E49D-A522-4E3F-B11D-4643EC5A25A1/f:Efekty.cs" caret="279" fromTop="8" />
+      <File id="BB56E49D-A522-4E3F-B11D-4643EC5A25A1/f:Efekty.cs" caret="1937" fromTop="23" />
+      <File id="BB56E49D-A522-4E3F-B11D-4643EC5A25A1/f:Efekty.cs" caret="751" fromTop="27" />
+      <File id="BB56E49D-A522-4E3F-B11D-4643EC5A25A1/f:Efekty.cs" caret="700" fromTop="26" />
+      <File id="BB56E49D-A522-4E3F-B11D-4643EC5A25A1/f:Efekty.cs" caret="3261" fromTop="23" />
+      <File id="BB56E49D-A522-4E3F-B11D-4643EC5A25A1/f:Efekty.cs" caret="2291" fromTop="60" />
+      <File id="BB56E49D-A522-4E3F-B11D-4643EC5A25A1/f:Efekty.cs" caret="3467" fromTop="60" />
+      <File id="BB56E49D-A522-4E3F-B11D-4643EC5A25A1/f:Form1.cs" caret="7633" fromTop="9" />
+      <File id="BB56E49D-A522-4E3F-B11D-4643EC5A25A1/f:Form1.cs" caret="2706" fromTop="16" />
+      <File id="BB56E49D-A522-4E3F-B11D-4643EC5A25A1/f:Form1.cs" caret="2428" fromTop="30" />
+      <File id="BB56E49D-A522-4E3F-B11D-4643EC5A25A1/f:Form1.cs" caret="391" fromTop="8" />
+      <File id="BB56E49D-A522-4E3F-B11D-4643EC5A25A1/f:Form1.cs" caret="961" fromTop="25" />
+      <File id="BB56E49D-A522-4E3F-B11D-4643EC5A25A1/f:Form1.cs" caret="2549" fromTop="26" />
+      <File id="BB56E49D-A522-4E3F-B11D-4643EC5A25A1/f:Form1.cs" caret="1566" fromTop="16" />
+      <File id="BB56E49D-A522-4E3F-B11D-4643EC5A25A1/f:Form1.cs" caret="2192" fromTop="32" />
+      <File id="BB56E49D-A522-4E3F-B11D-4643EC5A25A1/f:Form1.cs" caret="1986" fromTop="9" />
+      <File id="BB56E49D-A522-4E3F-B11D-4643EC5A25A1/f:Form1.cs" caret="1372" fromTop="1" />
+    </RecentEdits>
+  </RecentFiles>
+  <UnitTestRunner>
+    <Providers />
+  </UnitTestRunner>
+  <CompletionStatisticsManager>
+    <ItemStatistics item="Default">
+      <Item value="this" priority="9" />
+      <Item value="DialogResult" priority="1" />
+      <Item value="Bitmap" priority="1" />
+      <Item value="new" priority="1" />
+      <Item value="bitmapa" priority="0" />
+      <Item value="Rgb" priority="4" />
+      <Item value="rob" priority="3" />
+      <Item value="return" priority="1" />
+      <Item value="Efekty" priority="0" />
+      <Item value="bitmapaWynikowa" priority="1" />
+      <Item value="public" priority="1" />
+      <Item value="Byte" priority="0" />
+      <Item value="List" priority="0" />
+      <Item value="List&lt;Bitmap&gt;" priority="0" />
+      <Item value="const" priority="0" />
+      <Item value="int" priority="0" />
+      <Item value="private" priority="0" />
+      <Item value="if" priority="2" />
+      <Item value="_listIndex" priority="4" />
+      <Item value="_listaEfektow" priority="3" />
+      <Item value="ListCapacity" priority="1" />
+    </ItemStatistics>
+    <ItemStatistics item="Qualified:AnalizaObrazu.Form1">
+      <Item value="pictureBox1" priority="0" />
+      <Item value="openFileDialog" priority="0" />
+      <Item value="mainPictureBox" priority="1" />
+      <Item value="_bitmapa" priority="1" />
+    </ItemStatistics>
+    <ItemStatistics item="Qualified:System.Windows.Forms.PictureBox">
+      <Item value="Show" priority="0" />
+      <Item value="Image" priority="1" />
+    </ItemStatistics>
+    <ItemStatistics item="Qualified:System.Windows.Forms.OpenFileDialog">
+      <Item value="ShowDialog" priority="0" />
+      <Item value="FileName" priority="0" />
+    </ItemStatistics>
+    <ItemStatistics item="Qualified:@System.Windows.Forms.DialogResult">
+      <Item value="OK" priority="0" />
+    </ItemStatistics>
+    <ItemStatistics item="Qualified:@System.Drawing.Imaging.PixelFormat">
+      <Item value="Format24bppRgb" priority="1" />
+    </ItemStatistics>
+    <ItemStatistics item="Qualified:@System.Drawing.Imaging.ImageLockMode">
+      <Item value="ReadWrite" priority="0" />
+    </ItemStatistics>
+    <ItemStatistics item="Qualified:AnalizaObrazu.Rgb">
+      <Item value="r" priority="4" />
+      <Item value="g" priority="1" />
+      <Item value="Negatyw" priority="0" />
+      <Item value="b" priority="0" />
+    </ItemStatistics>
+    <ItemStatistics item="Qualified:@AnalizaObrazu.Efekty">
+      <Item value="Negatyw" priority="1" />
+      <Item value="Jasnosc" priority="0" />
+    </ItemStatistics>
+    <ItemStatistics item="Qualified:System.Collections.Generic.List`1">
+      <Item value="Add`0" priority="1" />
+      <Item value="Count" priority="0" />
+      <Item value="Remove`0" priority="0" />
+      <Item value="RemoveAt`0" priority="0" />
+      <Item value="RemoveRange`0" priority="0" />
+    </ItemStatistics>
+  </CompletionStatisticsManager>
+  <UnitTestRunnerNUnit>
+    <NUnitInstallDir IsNull="False">
+    </NUnitInstallDir>
+    <UseAddins>Never</UseAddins>
+  </UnitTestRunnerNUnit>
+</Configuration>
