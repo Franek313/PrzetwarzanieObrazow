@@ -180,5 +180,17 @@ namespace AnalizaObrazu
             Bitmap bitmapaWynikowa = Efekty.KonturWewnetrzny(bitmapaCzarnoBiala, 1);
             this.mainPictureBox.Image = bitmapaWynikowa;
         }
+
+        private void zmianaKontrastuToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Bitmap bitmapaWynikowa = Efekty.ZmianaKontrastu(_bitmapa, 0.7);
+            this.mainPictureBox.Image = bitmapaWynikowa;
+        }
+
+        private void ścienianieToolStripMenuItem1_Click(object sender, EventArgs e)
+        {
+            Bitmap bitmapaWynikowa = Efekty.Scienianie(_bitmapa);
+            this.mainPictureBox.Image = bitmapaWynikowa;
+        }
     }
 }

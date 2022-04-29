@@ -56,14 +56,18 @@
             this.progowanie50KeepToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.operacjeMorfologiczneToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.erozjaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.edycjaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.mainPictureBox = new System.Windows.Forms.PictureBox();
-            this.openFileDialog = new System.Windows.Forms.OpenFileDialog();
             this.dylatacjaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.erozjaDylatacjaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.dylatacjaErozjaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.konturWewnętrznyToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.konturZewnętrznyToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.zmianaKontrastuToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.edycjaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.mainPictureBox = new System.Windows.Forms.PictureBox();
+            this.openFileDialog = new System.Windows.Forms.OpenFileDialog();
+            this.ścienianieToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.szkieletyzacjaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.ścienianieToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.mainMenu.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.mainPictureBox)).BeginInit();
             this.SuspendLayout();
@@ -133,7 +137,9 @@
             this.progowanie150ToolStripMenuItem,
             this.progowanie200ToolStripMenuItem,
             this.progowanie50KeepToolStripMenuItem,
-            this.operacjeMorfologiczneToolStripMenuItem});
+            this.operacjeMorfologiczneToolStripMenuItem,
+            this.zmianaKontrastuToolStripMenuItem,
+            this.szkieletyzacjaToolStripMenuItem});
             this.efektyToolStripMenuItem.Name = "efektyToolStripMenuItem";
             this.efektyToolStripMenuItem.Size = new System.Drawing.Size(51, 20);
             this.efektyToolStripMenuItem.Text = "Efekty";
@@ -295,9 +301,50 @@
             // erozjaToolStripMenuItem
             // 
             this.erozjaToolStripMenuItem.Name = "erozjaToolStripMenuItem";
-            this.erozjaToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.erozjaToolStripMenuItem.Size = new System.Drawing.Size(178, 22);
             this.erozjaToolStripMenuItem.Text = "Erozja";
             this.erozjaToolStripMenuItem.Click += new System.EventHandler(this.ErozjaToolStripMenuItem_Click);
+            // 
+            // dylatacjaToolStripMenuItem
+            // 
+            this.dylatacjaToolStripMenuItem.Name = "dylatacjaToolStripMenuItem";
+            this.dylatacjaToolStripMenuItem.Size = new System.Drawing.Size(178, 22);
+            this.dylatacjaToolStripMenuItem.Text = "Dylatacja";
+            this.dylatacjaToolStripMenuItem.Click += new System.EventHandler(this.dylatacjaToolStripMenuItem_Click);
+            // 
+            // erozjaDylatacjaToolStripMenuItem
+            // 
+            this.erozjaDylatacjaToolStripMenuItem.Name = "erozjaDylatacjaToolStripMenuItem";
+            this.erozjaDylatacjaToolStripMenuItem.Size = new System.Drawing.Size(178, 22);
+            this.erozjaDylatacjaToolStripMenuItem.Text = "Erozja->Dylatacja";
+            this.erozjaDylatacjaToolStripMenuItem.Click += new System.EventHandler(this.erozjaDylatacjaToolStripMenuItem_Click);
+            // 
+            // dylatacjaErozjaToolStripMenuItem
+            // 
+            this.dylatacjaErozjaToolStripMenuItem.Name = "dylatacjaErozjaToolStripMenuItem";
+            this.dylatacjaErozjaToolStripMenuItem.Size = new System.Drawing.Size(178, 22);
+            this.dylatacjaErozjaToolStripMenuItem.Text = "Dylatacja->Erozja";
+            this.dylatacjaErozjaToolStripMenuItem.Click += new System.EventHandler(this.dylatacjaErozjaToolStripMenuItem_Click);
+            // 
+            // konturWewnętrznyToolStripMenuItem
+            // 
+            this.konturWewnętrznyToolStripMenuItem.Name = "konturWewnętrznyToolStripMenuItem";
+            this.konturWewnętrznyToolStripMenuItem.Size = new System.Drawing.Size(178, 22);
+            this.konturWewnętrznyToolStripMenuItem.Text = "Kontur Wewnętrzny";
+            this.konturWewnętrznyToolStripMenuItem.Click += new System.EventHandler(this.konturWewnętrznyToolStripMenuItem_Click);
+            // 
+            // konturZewnętrznyToolStripMenuItem
+            // 
+            this.konturZewnętrznyToolStripMenuItem.Name = "konturZewnętrznyToolStripMenuItem";
+            this.konturZewnętrznyToolStripMenuItem.Size = new System.Drawing.Size(178, 22);
+            this.konturZewnętrznyToolStripMenuItem.Text = "Kontur Zewnętrzny";
+            // 
+            // zmianaKontrastuToolStripMenuItem
+            // 
+            this.zmianaKontrastuToolStripMenuItem.Name = "zmianaKontrastuToolStripMenuItem";
+            this.zmianaKontrastuToolStripMenuItem.Size = new System.Drawing.Size(201, 22);
+            this.zmianaKontrastuToolStripMenuItem.Text = "Zmiana kontrastu";
+            this.zmianaKontrastuToolStripMenuItem.Click += new System.EventHandler(this.zmianaKontrastuToolStripMenuItem_Click);
             // 
             // edycjaToolStripMenuItem
             // 
@@ -318,39 +365,25 @@
             // 
             this.openFileDialog.Filter = "Bitmap (*.bmp)|*.bmp|Wszystkie pliki (*.*)|*.*";
             // 
-            // dylatacjaToolStripMenuItem
+            // ścienianieToolStripMenuItem
             // 
-            this.dylatacjaToolStripMenuItem.Name = "dylatacjaToolStripMenuItem";
-            this.dylatacjaToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
-            this.dylatacjaToolStripMenuItem.Text = "Dylatacja";
-            this.dylatacjaToolStripMenuItem.Click += new System.EventHandler(this.dylatacjaToolStripMenuItem_Click);
+            this.ścienianieToolStripMenuItem.Name = "ścienianieToolStripMenuItem";
+            this.ścienianieToolStripMenuItem.Size = new System.Drawing.Size(32, 19);
             // 
-            // erozjaDylatacjaToolStripMenuItem
+            // szkieletyzacjaToolStripMenuItem
             // 
-            this.erozjaDylatacjaToolStripMenuItem.Name = "erozjaDylatacjaToolStripMenuItem";
-            this.erozjaDylatacjaToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
-            this.erozjaDylatacjaToolStripMenuItem.Text = "Erozja->Dylatacja";
-            this.erozjaDylatacjaToolStripMenuItem.Click += new System.EventHandler(this.erozjaDylatacjaToolStripMenuItem_Click);
+            this.szkieletyzacjaToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.ścienianieToolStripMenuItem1});
+            this.szkieletyzacjaToolStripMenuItem.Name = "szkieletyzacjaToolStripMenuItem";
+            this.szkieletyzacjaToolStripMenuItem.Size = new System.Drawing.Size(201, 22);
+            this.szkieletyzacjaToolStripMenuItem.Text = "Szkieletyzacja";
             // 
-            // dylatacjaErozjaToolStripMenuItem
+            // ścienianieToolStripMenuItem1
             // 
-            this.dylatacjaErozjaToolStripMenuItem.Name = "dylatacjaErozjaToolStripMenuItem";
-            this.dylatacjaErozjaToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
-            this.dylatacjaErozjaToolStripMenuItem.Text = "Dylatacja->Erozja";
-            this.dylatacjaErozjaToolStripMenuItem.Click += new System.EventHandler(this.dylatacjaErozjaToolStripMenuItem_Click);
-            // 
-            // konturWewnętrznyToolStripMenuItem
-            // 
-            this.konturWewnętrznyToolStripMenuItem.Name = "konturWewnętrznyToolStripMenuItem";
-            this.konturWewnętrznyToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
-            this.konturWewnętrznyToolStripMenuItem.Text = "Kontur Wewnętrzny";
-            this.konturWewnętrznyToolStripMenuItem.Click += new System.EventHandler(this.konturWewnętrznyToolStripMenuItem_Click);
-            // 
-            // konturZewnętrznyToolStripMenuItem
-            // 
-            this.konturZewnętrznyToolStripMenuItem.Name = "konturZewnętrznyToolStripMenuItem";
-            this.konturZewnętrznyToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
-            this.konturZewnętrznyToolStripMenuItem.Text = "Kontur Zewnętrzny";
+            this.ścienianieToolStripMenuItem1.Name = "ścienianieToolStripMenuItem1";
+            this.ścienianieToolStripMenuItem1.Size = new System.Drawing.Size(180, 22);
+            this.ścienianieToolStripMenuItem1.Text = "Ścienianie";
+            this.ścienianieToolStripMenuItem1.Click += new System.EventHandler(this.ścienianieToolStripMenuItem1_Click);
             // 
             // Form1
             // 
@@ -408,6 +441,10 @@
         private System.Windows.Forms.ToolStripMenuItem dylatacjaErozjaToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem konturWewnętrznyToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem konturZewnętrznyToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem zmianaKontrastuToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem ścienianieToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem szkieletyzacjaToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem ścienianieToolStripMenuItem1;
     }
 }
 
