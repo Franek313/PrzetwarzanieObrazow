@@ -192,5 +192,11 @@ namespace AnalizaObrazu
             Bitmap bitmapaWynikowa = Efekty.Scienianie(_bitmapa);
             this.mainPictureBox.Image = bitmapaWynikowa;
         }
+
+        private void szkieletToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Bitmap bitmapaWynikowa = Efekty.Szkielet(_bitmapa);
+            this.mainPictureBox.Image = bitmapaWynikowa;
+        }
     }
 }

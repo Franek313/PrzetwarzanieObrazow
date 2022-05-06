@@ -237,12 +237,12 @@ namespace AnalizaObrazu
 
             unsafe
             {
-                for (int y = 1; y < wysokosc - 1 ; y++)
+                for (int y = 1; y < wysokosc - 1; y++)
                 {
                     byte* pWe = (byte*)(void*)scanWe + y * strideWe;
                     byte* pWy = (byte*)(void*)scanWy + y * strideWy;
 
-                    for (int x = 1; x < szerokosc - 1 ; x++)
+                    for (int x = 1; x < szerokosc - 1; x++)
                     {
                         Rgb pikselWejsciowy = ((Rgb*)pWe)[x];
                         Rgb pikselWynikowy;
@@ -251,17 +251,14 @@ namespace AnalizaObrazu
 
                         if (czyWarunekSpelniony)
                         {
-                            for (int yi = y-1; yi <= y-1; yi++)
+                            for (int yi = y - 1; yi <= y + 1; yi++)
                             {
-                                pWe = (byte*)(void*)scanWe + yi * strideWe;
-                                for (int xi = x -1; xi <= x-1; xi++)
+                                byte* pWeOtoczenie = (byte*)(void*)scanWe + yi * strideWe;
+                                for (int xi = x - 1; xi <= x + 1; xi++)
                                 {
-                                    Rgb pikselOtoczenia = ((Rgb*)pWe)[xi];
-
+                                    Rgb pikselOtoczenia = ((Rgb*)pWeOtoczenie)[xi];
                                     czyWarunekSpelniony = czyWarunekSpelniony &&
-                                    pikselOtoczenia.r == obiekt.r &&
-                                    pikselOtoczenia.g == obiekt.g &&
-                                    pikselOtoczenia.b == obiekt.b;
+                                        pikselOtoczenia.r == obiekt.r && pikselOtoczenia.g == obiekt.g && pikselOtoczenia.b == obiekt.b;
                                 }
                             }
 
@@ -287,6 +284,8 @@ namespace AnalizaObrazu
 
             return bitmapaWy;
         }
+
+
 
         public static Bitmap Logarytm(Bitmap bitmapaWe)
         {
@@ -446,7 +445,7 @@ namespace AnalizaObrazu
 
             for (int i = 0; i < 256; i++)
             {
-                double rob = param*(i - (255 / 2)) + 255/2;
+                double rob = param * (i - (255 / 2)) + 255 / 2;
                 if (rob < 0) rob = 0;
                 if (rob > 255) rob = 255;
                 LUT[i] = (byte)(rob);
@@ -472,9 +471,9 @@ namespace AnalizaObrazu
             bitmapaWe.UnlockBits(bmWeData);
 
             return bitmapaWy;
-    }
+        }
 
-    public static Bitmap WyrownywanieHistogramu(Bitmap bitmapaWe, int param)
+        public static Bitmap WyrownywanieHistogramu(Bitmap bitmapaWe, int param)
         {
             int wysokosc = bitmapaWe.Height;
             int szerokosc = bitmapaWe.Width;
@@ -703,17 +702,14 @@ namespace AnalizaObrazu
                         Rgb pikselWynikowy;
 
                         bool czyWarunekSpelniony = true;
-                        for (int yi = y - okno; yi <= y + okno; yi++)
+                        for (int yi = y - 1; yi <= y + 1; yi++)
                         {
-                            pWe = (byte*)(void*)scanWe + yi * strideWe;
-                            for (int xi = x - okno; xi <= x + okno; xi++)
+                            byte* pWeOtoczenie = (byte*)(void*)scanWe + yi * strideWe;
+                            for (int xi = x - 1; xi <= x + 1; xi++)
                             {
-                                Rgb pikselOtoczenia = ((Rgb*)pWe)[xi];
-
+                                Rgb pikselOtoczenia = ((Rgb*)pWeOtoczenie)[xi];
                                 czyWarunekSpelniony = czyWarunekSpelniony &&
-                                pikselOtoczenia.r == obiekt.r &&
-                                pikselOtoczenia.g == obiekt.g &&
-                                pikselOtoczenia.b == obiekt.b;
+                                    pikselOtoczenia.r == obiekt.r && pikselOtoczenia.g == obiekt.g && pikselOtoczenia.b == obiekt.b;
                             }
                         }
 
@@ -774,19 +770,17 @@ namespace AnalizaObrazu
                         if (czyWarunekSpelniony)
                         {
                             czyWarunekSpelniony = false;
-                            for (int yi = y - okno; yi <= y + okno; yi++)
+                            for (int yi = y - 1; yi <= y + 1; yi++)
                             {
-                                pWe = (byte*)(void*)scanWe + yi * strideWe;
-                                for (int xi = x - okno; xi <= x + okno; xi++)
+                                byte* pWeOtoczenie = (byte*)(void*)scanWe + yi * strideWe;
+                                for (int xi = x - 1; xi <= x + 1; xi++)
                                 {
-                                    Rgb pikselOtoczenia = ((Rgb*)pWe)[xi];
-
-                                    czyWarunekSpelniony = czyWarunekSpelniony ||
-                                    (pikselOtoczenia.r == obiekt.r &&
-                                    pikselOtoczenia.g == obiekt.g &&
-                                    pikselOtoczenia.b == obiekt.b);
+                                    Rgb pikselOtoczenia = ((Rgb*)pWeOtoczenie)[xi];
+                                    czyWarunekSpelniony = czyWarunekSpelniony &&
+                                        pikselOtoczenia.r == obiekt.r && pikselOtoczenia.g == obiekt.g && pikselOtoczenia.b == obiekt.b;
                                 }
                             }
+
                             if (czyWarunekSpelniony) pikselWynikowy = obiekt;
                             else pikselWynikowy = tlo;
 
@@ -802,7 +796,7 @@ namespace AnalizaObrazu
 
                 }
             }
-        
+
             bitmapaWy.UnlockBits(bmWyData);
             bitmapaWe.UnlockBits(bmWeData);
 
@@ -816,13 +810,19 @@ namespace AnalizaObrazu
 
 
             Bitmap bitmapaWy = new Bitmap(szerokosc, wysokosc, PixelFormat.Format24bppRgb);
+           
 
             BitmapData bmWeData = bitmapaWe.LockBits(new Rectangle(0, 0, szerokosc, wysokosc), ImageLockMode.ReadWrite, PixelFormat.Format24bppRgb);
             BitmapData bmWyData = bitmapaWy.LockBits(new Rectangle(0, 0, szerokosc, wysokosc), ImageLockMode.ReadWrite, PixelFormat.Format24bppRgb);
+           
+
             int strideWe = bmWeData.Stride;
             int strideWy = bmWeData.Stride;
+           
+
             IntPtr scanWe = bmWeData.Scan0;
             IntPtr scanWy = bmWyData.Scan0;
+           
 
             Rgb tlo = new Rgb() { r = 0, g = 0, b = 0 };
             Rgb obiekt = new Rgb() { r = 255, g = 255, b = 255 };
@@ -872,11 +872,152 @@ namespace AnalizaObrazu
 
             return bitmapaWy;
         }
+
+        internal static Bitmap Szkielet(Bitmap bitmapaWe)
+        {
+            int wysokosc = bitmapaWe.Height;
+            int szerokosc = bitmapaWe.Width;
+
+
+            Bitmap bitmapaWy = new Bitmap(szerokosc, wysokosc, PixelFormat.Format24bppRgb);
+            Bitmap bitmapaPom = new Bitmap(szerokosc, wysokosc, PixelFormat.Format24bppRgb);
+
+            BitmapData bmWeData = bitmapaWe.LockBits(new Rectangle(0, 0, szerokosc, wysokosc), ImageLockMode.ReadWrite, PixelFormat.Format24bppRgb);
+            BitmapData bmWyData = bitmapaWy.LockBits(new Rectangle(0, 0, szerokosc, wysokosc), ImageLockMode.ReadWrite, PixelFormat.Format24bppRgb);
+            BitmapData bmPomData = bitmapaPom.LockBits(new Rectangle(0, 0, szerokosc, wysokosc), ImageLockMode.ReadWrite, PixelFormat.Format24bppRgb);
+
+            int strideWe = bmWeData.Stride;
+            int strideWy = bmWeData.Stride;
+            int stridePom = bmPomData.Stride;
+
+            IntPtr scanWe = bmWeData.Scan0;
+            IntPtr scanWy = bmWyData.Scan0;
+            IntPtr scanPom = bmPomData.Scan0;
+
+            Rgb obiekt = new Rgb() { r = 0, g = 0, b = 0 };
+            Rgb tlo = new Rgb() { r = 255, g = 255, b = 255 };
+
+            unsafe
+            {
+                for (int y = 0 ; y < wysokosc ; y++)
+                {
+                    byte* pWe = (byte*)(void*)scanWe + y * strideWe;
+                    byte* pPom = (byte*)(void*)scanPom + y * stridePom;
+
+                    for (int x = 0; x < szerokosc; x++)
+                    {
+                        Rgb pikselWejsciowy = ((Rgb*)pWe)[x];
+                        ((Rgb*)pPom)[x] = pikselWejsciowy;
+                    }
+                }
+
+                while(true)
+                {
+                    bool czyPiselZostalUsuniety = false;
+
+                    for (int y = 1; y < wysokosc - 1; y++)
+                    {
+                        byte* pWe = (byte*)(void*)scanPom + y * stridePom;
+                        byte* pWy = (byte*)(void*)scanWy + y * strideWy;
+
+                        for (int x = 1; x < szerokosc - 1; x++)
+                        {
+                            Rgb pikselWejsciowy = ((Rgb*)pWe)[x];
+                            Rgb pikselWynikowy;
+
+                            bool czyObiekt = pikselWejsciowy.r == obiekt.r &&
+                                             pikselWejsciowy.g == obiekt.g &&
+                                             pikselWejsciowy.b == obiekt.b;
+
+                            if (czyObiekt)
+                            {
+                                Rgb lewy_gorny = ((Rgb*)((byte*)(void*)scanPom + (y - 1) * stridePom))[x - 1];
+                                Rgb lewy_srodek = ((Rgb*)((byte*)(void*)scanPom + (y) * stridePom))[x - 1];
+                                Rgb lewy_dol = ((Rgb*)((byte*)(void*)scanPom + (y + 1) * stridePom))[x - 1];
+
+                                Rgb srodek_gorny = ((Rgb*)((byte*)(void*)scanPom + (y - 1) * stridePom))[x];
+                                Rgb srodek_dol = ((Rgb*)((byte*)(void*)scanPom + (y + 1) * stridePom))[x];
+
+                                Rgb prawy_gorny = ((Rgb*)((byte*)(void*)scanPom + (y - 1) * stridePom))[x + 1];
+                                Rgb prawy_srodek = ((Rgb*)((byte*)(void*)scanPom + (y) * stridePom))[x + 1];
+                                Rgb prawy_dol = ((Rgb*)((byte*)(void*)scanPom + (y + 1) * stridePom))[x + 1];
+
+                                bool czyUsuwamy0 =
+                                                 srodek_gorny.r == tlo.r && srodek_gorny.g == tlo.g && srodek_gorny.b == tlo.b &&
+                                                 lewy_dol.r == obiekt.r && lewy_dol.g == obiekt.g && lewy_dol.b == obiekt.b &&
+                                                 srodek_dol.r == obiekt.r && srodek_dol.g == obiekt.g && srodek_dol.b == obiekt.b &&
+                                                 prawy_dol.r == obiekt.r && prawy_dol.g == obiekt.g && prawy_dol.b == obiekt.b;
+
+                                bool czyUsuwamy90 =
+                                                 prawy_srodek.r == tlo.r && prawy_srodek.g == tlo.g && prawy_srodek.b == tlo.b &&
+                                                 lewy_gorny.r == obiekt.r && lewy_gorny.g == obiekt.g && lewy_gorny.b == obiekt.b &&
+                                                 lewy_srodek.r == obiekt.r && lewy_srodek.g == obiekt.g && lewy_srodek.b == obiekt.b &&
+                                                 lewy_dol.r == obiekt.r && lewy_dol.g == obiekt.g && lewy_dol.b == obiekt.b;
+
+                                bool czyUsuwamy180 =
+                                                 srodek_dol.r == tlo.r && srodek_dol.g == tlo.g && srodek_dol.b == tlo.b &&
+                                                 lewy_gorny.r == obiekt.r && lewy_gorny.g == obiekt.g && lewy_gorny.b == obiekt.b &&
+                                                 srodek_gorny.r == obiekt.r && srodek_gorny.g == obiekt.g && srodek_gorny.b == obiekt.b &&
+                                                 prawy_gorny.r == obiekt.r && prawy_gorny.g == obiekt.g && prawy_gorny.b == obiekt.b;
+
+                                bool czyUsuwamy270 =
+                                                lewy_srodek.r == tlo.r && lewy_srodek.g == tlo.g && lewy_srodek.b == tlo.b &&
+                                                prawy_gorny.r == obiekt.r && prawy_gorny.g == obiekt.g && prawy_gorny.b == obiekt.b &&
+                                                prawy_srodek.r == obiekt.r && prawy_srodek.g == obiekt.g && prawy_srodek.b == obiekt.b &&
+                                                prawy_dol.r == obiekt.r && prawy_dol.g == obiekt.g && prawy_dol.b == obiekt.b;
+
+                                if (czyUsuwamy0 || czyUsuwamy90 || czyUsuwamy180 || czyUsuwamy270)
+                                {
+                                    pikselWynikowy = tlo;
+                                    czyPiselZostalUsuniety = true;
+                                }
+                                else
+                                {
+                                    pikselWynikowy = obiekt;
+                                }
+
+                            }
+                            else
+                            {
+                                pikselWynikowy = tlo;
+                            }
+
+                            ((Rgb*)pWy)[x] = pikselWynikowy;
+                        }
+                    }
+
+                    if (czyPiselZostalUsuniety)
+                    {
+                        for (int y = 0; y < wysokosc; y++)
+                        {
+                            byte* pWy = (byte*)(void*)scanWy + y * strideWy;
+                            byte* pPom = (byte*)(void*)scanPom + y * stridePom;
+
+                            for (int x = 0; x < szerokosc; x++)
+                            {
+                                Rgb pikselZWynikamiCzesciowymi = ((Rgb*)pWy)[x];
+                                ((Rgb*)pPom)[x] = pikselZWynikamiCzesciowymi;
+                            }
+                        }
+                    }
+                    else
+                    {
+                        break;
+                    }
+                }
+                    bitmapaPom.UnlockBits(bmPomData);
+                    bitmapaWy.UnlockBits(bmWyData);
+                    bitmapaWe.UnlockBits(bmWeData);
+
+                    return bitmapaWy;
+                }
+            }
+        }
     }
 
 
 
     
 
-}
+
 

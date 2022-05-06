@@ -62,12 +62,13 @@
             this.konturWewnętrznyToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.konturZewnętrznyToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.zmianaKontrastuToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.szkieletyzacjaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.ścienianieToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.edycjaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.mainPictureBox = new System.Windows.Forms.PictureBox();
             this.openFileDialog = new System.Windows.Forms.OpenFileDialog();
             this.ścienianieToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.szkieletyzacjaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.ścienianieToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
+            this.szkieletToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.mainMenu.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.mainPictureBox)).BeginInit();
             this.SuspendLayout();
@@ -346,6 +347,22 @@
             this.zmianaKontrastuToolStripMenuItem.Text = "Zmiana kontrastu";
             this.zmianaKontrastuToolStripMenuItem.Click += new System.EventHandler(this.zmianaKontrastuToolStripMenuItem_Click);
             // 
+            // szkieletyzacjaToolStripMenuItem
+            // 
+            this.szkieletyzacjaToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.ścienianieToolStripMenuItem1,
+            this.szkieletToolStripMenuItem});
+            this.szkieletyzacjaToolStripMenuItem.Name = "szkieletyzacjaToolStripMenuItem";
+            this.szkieletyzacjaToolStripMenuItem.Size = new System.Drawing.Size(201, 22);
+            this.szkieletyzacjaToolStripMenuItem.Text = "Szkieletyzacja";
+            // 
+            // ścienianieToolStripMenuItem1
+            // 
+            this.ścienianieToolStripMenuItem1.Name = "ścienianieToolStripMenuItem1";
+            this.ścienianieToolStripMenuItem1.Size = new System.Drawing.Size(180, 22);
+            this.ścienianieToolStripMenuItem1.Text = "Ścienianie";
+            this.ścienianieToolStripMenuItem1.Click += new System.EventHandler(this.ścienianieToolStripMenuItem1_Click);
+            // 
             // edycjaToolStripMenuItem
             // 
             this.edycjaToolStripMenuItem.Name = "edycjaToolStripMenuItem";
@@ -370,20 +387,12 @@
             this.ścienianieToolStripMenuItem.Name = "ścienianieToolStripMenuItem";
             this.ścienianieToolStripMenuItem.Size = new System.Drawing.Size(32, 19);
             // 
-            // szkieletyzacjaToolStripMenuItem
+            // szkieletToolStripMenuItem
             // 
-            this.szkieletyzacjaToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.ścienianieToolStripMenuItem1});
-            this.szkieletyzacjaToolStripMenuItem.Name = "szkieletyzacjaToolStripMenuItem";
-            this.szkieletyzacjaToolStripMenuItem.Size = new System.Drawing.Size(201, 22);
-            this.szkieletyzacjaToolStripMenuItem.Text = "Szkieletyzacja";
-            // 
-            // ścienianieToolStripMenuItem1
-            // 
-            this.ścienianieToolStripMenuItem1.Name = "ścienianieToolStripMenuItem1";
-            this.ścienianieToolStripMenuItem1.Size = new System.Drawing.Size(180, 22);
-            this.ścienianieToolStripMenuItem1.Text = "Ścienianie";
-            this.ścienianieToolStripMenuItem1.Click += new System.EventHandler(this.ścienianieToolStripMenuItem1_Click);
+            this.szkieletToolStripMenuItem.Name = "szkieletToolStripMenuItem";
+            this.szkieletToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.szkieletToolStripMenuItem.Text = "Szkielet";
+            this.szkieletToolStripMenuItem.Click += new System.EventHandler(this.szkieletToolStripMenuItem_Click);
             // 
             // Form1
             // 
@@ -445,6 +454,7 @@
         private System.Windows.Forms.ToolStripMenuItem ścienianieToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem szkieletyzacjaToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem ścienianieToolStripMenuItem1;
+        private System.Windows.Forms.ToolStripMenuItem szkieletToolStripMenuItem;
     }
 }
 
