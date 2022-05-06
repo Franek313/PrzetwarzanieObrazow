@@ -132,7 +132,7 @@ namespace AnalizaObrazu
 
         private void progowanie50KeepToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            Bitmap bitmapaWynikowa = Efekty.Progowanie(_bitmapa, 50);
+            Bitmap bitmapaWynikowa = Efekty.ProgowanieKeep(_bitmapa, 100);
             this.mainPictureBox.Image = bitmapaWynikowa;
         }
 

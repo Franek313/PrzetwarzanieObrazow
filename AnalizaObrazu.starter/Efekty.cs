@@ -647,12 +647,12 @@ namespace AnalizaObrazu
 
             unsafe
             {
-                for (int y = 1; y < wysokosc; y++)
+                for (int y = 0; y < wysokosc; y++)
                 {
                     byte* pWe = (byte*)(void*)scanWe + y * strideWe;
                     byte* pWy = (byte*)(void*)scanWy + y * strideWy;
 
-                    for (int x = 1; x < szerokosc; x++)
+                    for (int x = 0; x < szerokosc; x++)
                     {
                         var pixelWejsciowy = ((Rgb*)pWe)[x];
                         Rgb pixelWynikowy;
@@ -662,7 +662,7 @@ namespace AnalizaObrazu
                         }
                         else pixelWynikowy = pixelWejsciowy;
 
-                        ((Rgb*)pWe)[x] = pixelWynikowy;
+                        ((Rgb*)pWy)[x] = pixelWynikowy;
                     }
                 }
             }
