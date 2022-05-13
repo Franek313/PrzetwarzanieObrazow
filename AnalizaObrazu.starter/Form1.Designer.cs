@@ -64,11 +64,15 @@
             this.zmianaKontrastuToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.szkieletyzacjaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.ścienianieToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
+            this.szkieletToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.edycjaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.mainPictureBox = new System.Windows.Forms.PictureBox();
             this.openFileDialog = new System.Windows.Forms.OpenFileDialog();
             this.ścienianieToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.szkieletToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.filtryToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.usredniajacyToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.usredniajacyMaskaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.gaussToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.mainMenu.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.mainPictureBox)).BeginInit();
             this.SuspendLayout();
@@ -140,7 +144,8 @@
             this.progowanie50KeepToolStripMenuItem,
             this.operacjeMorfologiczneToolStripMenuItem,
             this.zmianaKontrastuToolStripMenuItem,
-            this.szkieletyzacjaToolStripMenuItem});
+            this.szkieletyzacjaToolStripMenuItem,
+            this.filtryToolStripMenuItem});
             this.efektyToolStripMenuItem.Name = "efektyToolStripMenuItem";
             this.efektyToolStripMenuItem.Size = new System.Drawing.Size(51, 20);
             this.efektyToolStripMenuItem.Text = "Efekty";
@@ -359,9 +364,16 @@
             // ścienianieToolStripMenuItem1
             // 
             this.ścienianieToolStripMenuItem1.Name = "ścienianieToolStripMenuItem1";
-            this.ścienianieToolStripMenuItem1.Size = new System.Drawing.Size(180, 22);
+            this.ścienianieToolStripMenuItem1.Size = new System.Drawing.Size(127, 22);
             this.ścienianieToolStripMenuItem1.Text = "Ścienianie";
             this.ścienianieToolStripMenuItem1.Click += new System.EventHandler(this.ścienianieToolStripMenuItem1_Click);
+            // 
+            // szkieletToolStripMenuItem
+            // 
+            this.szkieletToolStripMenuItem.Name = "szkieletToolStripMenuItem";
+            this.szkieletToolStripMenuItem.Size = new System.Drawing.Size(127, 22);
+            this.szkieletToolStripMenuItem.Text = "Szkielet";
+            this.szkieletToolStripMenuItem.Click += new System.EventHandler(this.szkieletToolStripMenuItem_Click);
             // 
             // edycjaToolStripMenuItem
             // 
@@ -387,12 +399,36 @@
             this.ścienianieToolStripMenuItem.Name = "ścienianieToolStripMenuItem";
             this.ścienianieToolStripMenuItem.Size = new System.Drawing.Size(32, 19);
             // 
-            // szkieletToolStripMenuItem
+            // filtryToolStripMenuItem
             // 
-            this.szkieletToolStripMenuItem.Name = "szkieletToolStripMenuItem";
-            this.szkieletToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
-            this.szkieletToolStripMenuItem.Text = "Szkielet";
-            this.szkieletToolStripMenuItem.Click += new System.EventHandler(this.szkieletToolStripMenuItem_Click);
+            this.filtryToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.usredniajacyToolStripMenuItem,
+            this.usredniajacyMaskaToolStripMenuItem,
+            this.gaussToolStripMenuItem});
+            this.filtryToolStripMenuItem.Name = "filtryToolStripMenuItem";
+            this.filtryToolStripMenuItem.Size = new System.Drawing.Size(201, 22);
+            this.filtryToolStripMenuItem.Text = "Filtry";
+            // 
+            // usredniajacyToolStripMenuItem
+            // 
+            this.usredniajacyToolStripMenuItem.Name = "usredniajacyToolStripMenuItem";
+            this.usredniajacyToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.usredniajacyToolStripMenuItem.Text = "Usredniajacy";
+            this.usredniajacyToolStripMenuItem.Click += new System.EventHandler(this.usredniajacyToolStripMenuItem_Click);
+            // 
+            // usredniajacyMaskaToolStripMenuItem
+            // 
+            this.usredniajacyMaskaToolStripMenuItem.Name = "usredniajacyMaskaToolStripMenuItem";
+            this.usredniajacyMaskaToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.usredniajacyMaskaToolStripMenuItem.Text = "Usredniajacy maska";
+            this.usredniajacyMaskaToolStripMenuItem.Click += new System.EventHandler(this.usredniajacyMaskaToolStripMenuItem_Click);
+            // 
+            // gaussToolStripMenuItem
+            // 
+            this.gaussToolStripMenuItem.Name = "gaussToolStripMenuItem";
+            this.gaussToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.gaussToolStripMenuItem.Text = "Gauss";
+            this.gaussToolStripMenuItem.Click += new System.EventHandler(this.gaussToolStripMenuItem_Click);
             // 
             // Form1
             // 
@@ -455,6 +491,10 @@
         private System.Windows.Forms.ToolStripMenuItem szkieletyzacjaToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem ścienianieToolStripMenuItem1;
         private System.Windows.Forms.ToolStripMenuItem szkieletToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem filtryToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem usredniajacyToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem usredniajacyMaskaToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem gaussToolStripMenuItem;
     }
 }
 

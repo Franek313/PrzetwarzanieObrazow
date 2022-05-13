@@ -285,7 +285,198 @@ namespace AnalizaObrazu
             return bitmapaWy;
         }
 
+        public static Bitmap FiltrUsredniajacy(Bitmap bitmapaWe, int n)
+        {
+            int wysokosc = bitmapaWe.Height;
+            int szerokosc = bitmapaWe.Width;
 
+
+            Bitmap bitmapaWy = new Bitmap(szerokosc, wysokosc, PixelFormat.Format24bppRgb);
+
+            BitmapData bmWeData = bitmapaWe.LockBits(new Rectangle(0, 0, szerokosc, wysokosc), ImageLockMode.ReadWrite, PixelFormat.Format24bppRgb);
+            BitmapData bmWyData = bitmapaWy.LockBits(new Rectangle(0, 0, szerokosc, wysokosc), ImageLockMode.ReadWrite, PixelFormat.Format24bppRgb);
+            int strideWe = bmWeData.Stride;
+            int strideWy = bmWeData.Stride;
+            IntPtr scanWe = bmWeData.Scan0;
+            IntPtr scanWy = bmWyData.Scan0;
+
+            int w = (2 * n + 1) * (2 * n + 1);
+
+            unsafe
+            {
+                for (int y = n; y < wysokosc - n; y++)
+                {
+                    byte* pWe = (byte*)(void*)scanWe + y * strideWe;
+                    byte* pWy = (byte*)(void*)scanWy + y * strideWy;
+                    for (int x = n; x < szerokosc - n; x++)
+                    {
+                        Rgb pikselWynikowy;
+                        int suma_r = 0, suma_g = 0, suma_b = 0;
+
+                        for (int yi = y - n; yi <= y + n; yi++)
+                        {
+                            byte* pWeOtoczenie = (byte*)(void*)scanWe + yi * strideWe;
+                            for (int xi = x - n; xi <= x + n; xi++)
+                            {
+                                Rgb pikselOtoczenia = ((Rgb*)pWeOtoczenie)[xi];
+                                suma_r += pikselOtoczenia.r;
+                                suma_g += pikselOtoczenia.g;
+                                suma_b += pikselOtoczenia.b;
+                            }
+                        }
+
+                        pikselWynikowy.r = (byte)(suma_r / w);
+                        pikselWynikowy.g = (byte)(suma_g / w);
+                        pikselWynikowy.b = (byte)(suma_b / w);
+
+                        ((Rgb*)pWy)[x] = pikselWynikowy;
+
+                    }
+                }
+            }
+            bitmapaWy.UnlockBits(bmWyData);
+            bitmapaWe.UnlockBits(bmWeData);
+
+            return bitmapaWy;
+        }
+
+        public static Bitmap FiltrUsredniajacy(Bitmap bitmapaWe)
+        {
+            int wysokosc = bitmapaWe.Height;
+            int szerokosc = bitmapaWe.Width;
+
+
+            Bitmap bitmapaWy = new Bitmap(szerokosc, wysokosc, PixelFormat.Format24bppRgb);
+
+            BitmapData bmWeData = bitmapaWe.LockBits(new Rectangle(0, 0, szerokosc, wysokosc), ImageLockMode.ReadWrite, PixelFormat.Format24bppRgb);
+            BitmapData bmWyData = bitmapaWy.LockBits(new Rectangle(0, 0, szerokosc, wysokosc), ImageLockMode.ReadWrite, PixelFormat.Format24bppRgb);
+            int strideWe = bmWeData.Stride;
+            int strideWy = bmWeData.Stride;
+            IntPtr scanWe = bmWeData.Scan0;
+            IntPtr scanWy = bmWyData.Scan0;
+
+            int[,] wsp = new int[3,3] {
+            {1,1,1},
+            {1,0,1},
+            {1,1,1}
+            };
+
+            int w = 0;
+
+            for(int i=0; i<3; i++)
+            {
+                for(int j=0; j<3; j++)
+                {
+                    w += wsp[i, j];
+                }
+            }
+
+            unsafe
+            {
+                for (int y = 1; y < wysokosc - 1; y++)
+                {
+                    byte* pWe = (byte*)(void*)scanWe + y * strideWe;
+                    byte* pWy = (byte*)(void*)scanWy + y * strideWy;
+                    for (int x = 1; x < szerokosc - 1; x++)
+                    {
+                        Rgb pikselWynikowy;
+                        int suma_r = 0, suma_g = 0, suma_b = 0;
+
+                        for (int yi = y - 1; yi <= y + 1; yi++)
+                        {
+                            byte* pWeOtoczenie = (byte*)(void*)scanWe + yi * strideWe;
+                            for (int xi = x - 1; xi <= x + 1; xi++)
+                            {
+                                Rgb pikselOtoczenia = ((Rgb*)pWeOtoczenie)[xi];
+                                suma_r += pikselOtoczenia.r * wsp[x - xi + 1, y - yi + 1];
+                                suma_g += pikselOtoczenia.g * wsp[x - xi + 1, y - yi + 1];
+                                suma_b += pikselOtoczenia.b * wsp[x - xi + 1, y - yi + 1];
+                            }
+                        }
+
+                        pikselWynikowy.r = (byte)(suma_r / w);
+                        pikselWynikowy.g = (byte)(suma_g / w);
+                        pikselWynikowy.b = (byte)(suma_b / w);
+
+                        ((Rgb*)pWy)[x] = pikselWynikowy;
+
+                    }
+                }
+            }
+            bitmapaWy.UnlockBits(bmWyData);
+            bitmapaWe.UnlockBits(bmWeData);
+
+            return bitmapaWy;
+        }
+
+        public static Bitmap FiltrGaussa(Bitmap bitmapaWe)
+        {
+            int wysokosc = bitmapaWe.Height;
+            int szerokosc = bitmapaWe.Width;
+
+
+            Bitmap bitmapaWy = new Bitmap(szerokosc, wysokosc, PixelFormat.Format24bppRgb);
+
+            BitmapData bmWeData = bitmapaWe.LockBits(new Rectangle(0, 0, szerokosc, wysokosc), ImageLockMode.ReadWrite, PixelFormat.Format24bppRgb);
+            BitmapData bmWyData = bitmapaWy.LockBits(new Rectangle(0, 0, szerokosc, wysokosc), ImageLockMode.ReadWrite, PixelFormat.Format24bppRgb);
+            int strideWe = bmWeData.Stride;
+            int strideWy = bmWeData.Stride;
+            IntPtr scanWe = bmWeData.Scan0;
+            IntPtr scanWy = bmWyData.Scan0;
+
+            int[,] wsp = new int[3, 3] {
+            {1,2,1},
+            {2,4,2},
+            {1,2,1}
+            };
+
+            int w = 0;
+
+            for (int i = 0; i < 3; i++)
+            {
+                for (int j = 0; j < 3; j++)
+                {
+                    w += wsp[i, j];
+                }
+            }
+
+            unsafe
+            {
+                for (int y = 1; y < wysokosc - 1; y++)
+                {
+                    byte* pWe = (byte*)(void*)scanWe + y * strideWe;
+                    byte* pWy = (byte*)(void*)scanWy + y * strideWy;
+                    for (int x = 1; x < szerokosc - 1; x++)
+                    {
+                        Rgb pikselWynikowy;
+                        int suma_r = 0, suma_g = 0, suma_b = 0;
+
+                        for (int yi = y - 1; yi <= y + 1; yi++)
+                        {
+                            byte* pWeOtoczenie = (byte*)(void*)scanWe + yi * strideWe;
+                            for (int xi = x - 1; xi <= x + 1; xi++)
+                            {
+                                Rgb pikselOtoczenia = ((Rgb*)pWeOtoczenie)[xi];
+                                suma_r += pikselOtoczenia.r * wsp[x - xi + 1, y - yi + 1];
+                                suma_g += pikselOtoczenia.g * wsp[x - xi + 1, y - yi + 1];
+                                suma_b += pikselOtoczenia.b * wsp[x - xi + 1, y - yi + 1];
+                            }
+                        }
+
+                        pikselWynikowy.r = (byte)(suma_r / w);
+                        pikselWynikowy.g = (byte)(suma_g / w);
+                        pikselWynikowy.b = (byte)(suma_b / w);
+
+                        ((Rgb*)pWy)[x] = pikselWynikowy;
+
+                    }
+                }
+            }
+            bitmapaWy.UnlockBits(bmWyData);
+            bitmapaWe.UnlockBits(bmWeData);
+
+            return bitmapaWy;
+        }
 
         public static Bitmap Logarytm(Bitmap bitmapaWe)
         {

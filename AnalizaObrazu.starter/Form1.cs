@@ -198,5 +198,23 @@ namespace AnalizaObrazu
             Bitmap bitmapaWynikowa = Efekty.Szkielet(_bitmapa);
             this.mainPictureBox.Image = bitmapaWynikowa;
         }
+
+        private void usredniajacyToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Bitmap bitmapaWynikowa = Efekty.FiltrUsredniajacy(_bitmapa, 3);
+            this.mainPictureBox.Image = bitmapaWynikowa;
+        }
+
+        private void usredniajacyMaskaToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Bitmap bitmapaWynikowa = Efekty.FiltrUsredniajacy(_bitmapa);
+            this.mainPictureBox.Image = bitmapaWynikowa;
+        }
+
+        private void gaussToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Bitmap bitmapaWynikowa = Efekty.FiltrGaussa(_bitmapa);
+            this.mainPictureBox.Image = bitmapaWynikowa;
+        }
     }
 }
