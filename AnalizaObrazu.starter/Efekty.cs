@@ -409,6 +409,68 @@ namespace AnalizaObrazu
             return bitmapaWy;
         }
 
+        public static Bitmap FiltrMedianowy(Bitmap bitmapaWe, int n)
+        {
+            int wysokosc = bitmapaWe.Height;
+            int szerokosc = bitmapaWe.Width;
+
+
+            Bitmap bitmapaWy = new Bitmap(szerokosc, wysokosc, PixelFormat.Format24bppRgb);
+
+            BitmapData bmWeData = bitmapaWe.LockBits(new Rectangle(0, 0, szerokosc, wysokosc), ImageLockMode.ReadWrite, PixelFormat.Format24bppRgb);
+            BitmapData bmWyData = bitmapaWy.LockBits(new Rectangle(0, 0, szerokosc, wysokosc), ImageLockMode.ReadWrite, PixelFormat.Format24bppRgb);
+            int strideWe = bmWeData.Stride;
+            int strideWy = bmWeData.Stride;
+            IntPtr scanWe = bmWeData.Scan0;
+            IntPtr scanWy = bmWyData.Scan0;
+            List<byte> otoczenie_r = new List<byte>();
+            List<byte> otoczenie_g = new List<byte>();
+            List<byte> otoczenie_b = new List<byte>();
+
+            int w = (2 * n + 1) * (2 * n + 1)/2;
+
+            unsafe
+            {
+                for (int y = n; y < wysokosc - n; y++)
+                {
+                    byte* pWe = (byte*)(void*)scanWe + y * strideWe;
+                    byte* pWy = (byte*)(void*)scanWy + y * strideWy;
+                    for (int x = n; x < szerokosc - n; x++)
+                    {
+                        Rgb pikselWynikowy;
+                        otoczenie_r.Clear();
+                        otoczenie_g.Clear();
+                        otoczenie_b.Clear();
+
+                        int suma_r = 0, suma_g = 0, suma_b = 0;
+
+                        for (int yi = y - n; yi <= y + n; yi++)
+                        {
+                            byte* pWeOtoczenie = (byte*)(void*)scanWe + yi * strideWe;
+                            for (int xi = x - n; xi <= x + n; xi++)
+                            {
+                                Rgb pikselOtoczenia = ((Rgb*)pWeOtoczenie)[xi];
+                                otoczenie_r.Add(pikselOtoczenia.r);
+                                otoczenie_g.Add(pikselOtoczenia.g);
+                                otoczenie_b.Add(pikselOtoczenia.b);
+                            }
+                        }
+
+                        pikselWynikowy.r = (otoczenie_r.OrderBy(t => t).ToArray()[w]);
+                        pikselWynikowy.g = (otoczenie_g.OrderBy(t => t).ToArray()[w]);
+                        pikselWynikowy.b = (otoczenie_b.OrderBy(t => t).ToArray()[w]);
+
+                        ((Rgb*)pWy)[x] = pikselWynikowy;
+
+                    }
+                }
+            }
+            bitmapaWy.UnlockBits(bmWyData);
+            bitmapaWe.UnlockBits(bmWeData);
+
+            return bitmapaWy;
+        }
+
         public static Bitmap FiltrGaussa(Bitmap bitmapaWe)
         {
             int wysokosc = bitmapaWe.Height;

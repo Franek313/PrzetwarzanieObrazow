@@ -216,5 +216,11 @@ namespace AnalizaObrazu
             Bitmap bitmapaWynikowa = Efekty.FiltrGaussa(_bitmapa);
             this.mainPictureBox.Image = bitmapaWynikowa;
         }
+
+        private void medianowyToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Bitmap bitmapaWynikowa = Efekty.FiltrMedianowy(_bitmapa, 5);
+            this.mainPictureBox.Image = bitmapaWynikowa;
+        }
     }
 }

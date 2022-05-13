@@ -65,14 +65,15 @@
             this.szkieletyzacjaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.ścienianieToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.szkieletToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.edycjaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.mainPictureBox = new System.Windows.Forms.PictureBox();
-            this.openFileDialog = new System.Windows.Forms.OpenFileDialog();
-            this.ścienianieToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.filtryToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.usredniajacyToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.usredniajacyMaskaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.gaussToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.odszumianieToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.edycjaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.mainPictureBox = new System.Windows.Forms.PictureBox();
+            this.openFileDialog = new System.Windows.Forms.OpenFileDialog();
+            this.ścienianieToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.mainMenu.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.mainPictureBox)).BeginInit();
             this.SuspendLayout();
@@ -375,36 +376,13 @@
             this.szkieletToolStripMenuItem.Text = "Szkielet";
             this.szkieletToolStripMenuItem.Click += new System.EventHandler(this.szkieletToolStripMenuItem_Click);
             // 
-            // edycjaToolStripMenuItem
-            // 
-            this.edycjaToolStripMenuItem.Name = "edycjaToolStripMenuItem";
-            this.edycjaToolStripMenuItem.Size = new System.Drawing.Size(53, 20);
-            this.edycjaToolStripMenuItem.Text = "Edycja";
-            // 
-            // mainPictureBox
-            // 
-            this.mainPictureBox.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.mainPictureBox.Location = new System.Drawing.Point(0, 24);
-            this.mainPictureBox.Name = "mainPictureBox";
-            this.mainPictureBox.Size = new System.Drawing.Size(543, 453);
-            this.mainPictureBox.TabIndex = 1;
-            this.mainPictureBox.TabStop = false;
-            // 
-            // openFileDialog
-            // 
-            this.openFileDialog.Filter = "Bitmap (*.bmp)|*.bmp|Wszystkie pliki (*.*)|*.*";
-            // 
-            // ścienianieToolStripMenuItem
-            // 
-            this.ścienianieToolStripMenuItem.Name = "ścienianieToolStripMenuItem";
-            this.ścienianieToolStripMenuItem.Size = new System.Drawing.Size(32, 19);
-            // 
             // filtryToolStripMenuItem
             // 
             this.filtryToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.usredniajacyToolStripMenuItem,
             this.usredniajacyMaskaToolStripMenuItem,
-            this.gaussToolStripMenuItem});
+            this.gaussToolStripMenuItem,
+            this.odszumianieToolStripMenuItem});
             this.filtryToolStripMenuItem.Name = "filtryToolStripMenuItem";
             this.filtryToolStripMenuItem.Size = new System.Drawing.Size(201, 22);
             this.filtryToolStripMenuItem.Text = "Filtry";
@@ -429,6 +407,37 @@
             this.gaussToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.gaussToolStripMenuItem.Text = "Gauss";
             this.gaussToolStripMenuItem.Click += new System.EventHandler(this.gaussToolStripMenuItem_Click);
+            // 
+            // odszumianieToolStripMenuItem
+            // 
+            this.odszumianieToolStripMenuItem.Name = "odszumianieToolStripMenuItem";
+            this.odszumianieToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.odszumianieToolStripMenuItem.Text = "Medianowy";
+            this.odszumianieToolStripMenuItem.Click += new System.EventHandler(this.medianowyToolStripMenuItem_Click);
+            // 
+            // edycjaToolStripMenuItem
+            // 
+            this.edycjaToolStripMenuItem.Name = "edycjaToolStripMenuItem";
+            this.edycjaToolStripMenuItem.Size = new System.Drawing.Size(53, 20);
+            this.edycjaToolStripMenuItem.Text = "Edycja";
+            // 
+            // mainPictureBox
+            // 
+            this.mainPictureBox.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.mainPictureBox.Location = new System.Drawing.Point(0, 24);
+            this.mainPictureBox.Name = "mainPictureBox";
+            this.mainPictureBox.Size = new System.Drawing.Size(543, 453);
+            this.mainPictureBox.TabIndex = 1;
+            this.mainPictureBox.TabStop = false;
+            // 
+            // openFileDialog
+            // 
+            this.openFileDialog.Filter = "Bitmap (*.bmp)|*.bmp|Wszystkie pliki (*.*)|*.*";
+            // 
+            // ścienianieToolStripMenuItem
+            // 
+            this.ścienianieToolStripMenuItem.Name = "ścienianieToolStripMenuItem";
+            this.ścienianieToolStripMenuItem.Size = new System.Drawing.Size(32, 19);
             // 
             // Form1
             // 
@@ -495,6 +504,7 @@
         private System.Windows.Forms.ToolStripMenuItem usredniajacyToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem usredniajacyMaskaToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem gaussToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem odszumianieToolStripMenuItem;
     }
 }
 
