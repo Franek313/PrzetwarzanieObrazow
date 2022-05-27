@@ -97,6 +97,109 @@ namespace AnalizaObrazu
             return bitmapaWy;
         }
 
+        public static Bitmap Skalowanie(Bitmap bitmapaWe, double ratio)
+        {
+            int wysokoscWe = bitmapaWe.Height;
+            int szerokoscWe = bitmapaWe.Width;
+
+            int wysokoscWy = (int)(wysokoscWe * ratio);
+            int szerokoscWy = (int)(szerokoscWe * ratio);
+
+            double ratioWys = ((double)(wysokoscWy - 1)) / (wysokoscWe - 1);
+            double ratioSzer = ((double)(szerokoscWy - 1)) / (szerokoscWe - 1);
+
+            Bitmap bitmapaWy = new Bitmap(szerokoscWy, wysokoscWy, PixelFormat.Format24bppRgb);
+
+            BitmapData bmWeData = bitmapaWe.LockBits(new Rectangle(0, 0, szerokoscWe, wysokoscWe), ImageLockMode.ReadWrite, PixelFormat.Format24bppRgb);
+            BitmapData bmWyData = bitmapaWy.LockBits(new Rectangle(0, 0, szerokoscWy, wysokoscWy), ImageLockMode.ReadWrite, PixelFormat.Format24bppRgb);
+
+            int strideWe = bmWeData.Stride;
+            int strideWy = bmWyData.Stride;
+
+            IntPtr scanWe = bmWeData.Scan0;
+            IntPtr scanWy = bmWyData.Scan0;
+
+            unsafe
+            {
+                for (int y = 0; y < wysokoscWy; y++)
+                {
+                    double b = (y / ratioWys) - (int)(y / ratioWys);
+
+                    //byte* pWe = (byte*)(void*)scanWe + (int)Math.Round(y / ratio) * strideWe;
+                    byte* pWy = (byte*)(void*)scanWy + y * strideWy;
+
+                    for (int x = 0; x < szerokoscWy; x++)
+                    {
+                        double a = (x / ratioSzer) - (int)(x / ratioSzer);
+
+                        double suma_r = 0;
+                        double suma_g = 0;
+                        double suma_b = 0;
+
+                        if ((1 - b) * (1 - a) != 0)
+                        {
+                            int xi = (int)(x / ratioSzer);
+                            int yi = (int)(y / ratioWys);
+
+                            Rgb p_lewa_gora = ((Rgb*)((byte*)(void*)scanWe +  yi * strideWe))[xi];
+                            suma_r += (1 - b) * (1 - a) * p_lewa_gora.r;
+                            suma_g += (1 - b) * (1 - a) * p_lewa_gora.g;
+                            suma_b += (1 - b) * (1 - a) * p_lewa_gora.b;
+                        }
+
+                        if ((1 - b) * a != 0)
+                        {
+                            int xi = (int)(x / ratioSzer)+1;
+                            int yi = (int)(y / ratioWys);
+
+                            Rgb p_praw_gora = ((Rgb*)((byte*)(void*)scanWe + yi * strideWe))[xi];
+                            suma_r += (1 - b) * a * p_praw_gora.r;
+                            suma_g += (1 - b) * a * p_praw_gora.g;
+                            suma_b += (1 - b) * a * p_praw_gora.b;
+                        }
+
+                        if (b * (1 - a) != 0)
+                        {
+                            int xi = (int)(x / ratioSzer);
+                            int yi = (int)(y / ratioWys) + 1;
+
+                            Rgb p_lewy_dol = ((Rgb*)((byte*)(void*)scanWe + yi * strideWe))[xi];
+                            suma_r += b * (1 - a) * p_lewy_dol.r;
+                            suma_g += b * (1 - a) * p_lewy_dol.g;
+                            suma_b += b * (1 - a) * p_lewy_dol.b;
+                        }
+
+                        if (b * a != 0)
+                        {
+                            int xi = (int)(x / ratioSzer) + 1;
+                            int yi = (int)(y / ratioWys) + 1;
+
+                            Rgb p_prawy_dol = ((Rgb*)((byte*)(void*)scanWe + yi * strideWe))[xi];
+                            suma_r += b * a * p_prawy_dol.r;
+                            suma_g += b * a * p_prawy_dol.g;
+                            suma_b += b * a * p_prawy_dol.b;
+                        }
+
+                        if (suma_r < 0) suma_r = 0; if (suma_r > 255) suma_r = 255;
+                        if (suma_g < 0) suma_g = 0; if (suma_g > 255) suma_g = 255;
+                        if (suma_b < 0) suma_b = 0; if (suma_b > 255) suma_b = 255;
+
+                        Rgb pikselWynikowy;
+                        pikselWynikowy.r = (byte)suma_r;
+                        pikselWynikowy.g = (byte)suma_g;
+                        pikselWynikowy.b = (byte)suma_b;
+
+                        //Rgb pikselWejsciowy = ((Rgb*)pWe)[(int)Math.Round(x / ratio)];
+                        ((Rgb*)pWy)[x] = pikselWynikowy;
+
+                    }
+                }
+            }
+            bitmapaWy.UnlockBits(bmWyData);
+            bitmapaWe.UnlockBits(bmWeData);
+
+            return bitmapaWy;
+        }
 
 
         public static Bitmap Jasnosc(Bitmap bitmapaWe)
@@ -1264,6 +1367,10 @@ namespace AnalizaObrazu
 
                     return bitmapaWy;
                 }
+
+
+
+
             }
         }
     }

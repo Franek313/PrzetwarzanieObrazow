@@ -222,5 +222,29 @@ namespace AnalizaObrazu
             Bitmap bitmapaWynikowa = Efekty.FiltrMedianowy(_bitmapa, 5);
             this.mainPictureBox.Image = bitmapaWynikowa;
         }
+
+        private void zmianaHSVToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+           // Bitmap bitmapaWynikowa = Efekty.ZmianaHSV(_bitmapa, 40, 20, 10);
+           // this.mainPictureBox.Image = bitmapaWynikowa;
+        }
+
+        private void x2ToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Bitmap bitmapaWynikowa = Efekty.Skalowanie(_bitmapa, 2.0f);
+            this.mainPictureBox.Image = bitmapaWynikowa;
+        }
+
+        private void x25ToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Bitmap bitmapaWynikowa = Efekty.Skalowanie(_bitmapa, 2.5f);
+            this.mainPictureBox.Image = bitmapaWynikowa;
+        }
+
+        private void x3ToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Bitmap bitmapaWynikowa = Efekty.Skalowanie(_bitmapa, 3.0f);
+            this.mainPictureBox.Image = bitmapaWynikowa;
+        }
     }
 }

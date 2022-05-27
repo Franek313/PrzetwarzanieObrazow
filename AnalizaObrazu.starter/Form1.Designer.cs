@@ -74,6 +74,11 @@
             this.mainPictureBox = new System.Windows.Forms.PictureBox();
             this.openFileDialog = new System.Windows.Forms.OpenFileDialog();
             this.ścienianieToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.zmianaHSVToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.skalowanieToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.x2ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.x25ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.x3ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.mainMenu.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.mainPictureBox)).BeginInit();
             this.SuspendLayout();
@@ -146,7 +151,9 @@
             this.operacjeMorfologiczneToolStripMenuItem,
             this.zmianaKontrastuToolStripMenuItem,
             this.szkieletyzacjaToolStripMenuItem,
-            this.filtryToolStripMenuItem});
+            this.filtryToolStripMenuItem,
+            this.zmianaHSVToolStripMenuItem,
+            this.skalowanieToolStripMenuItem});
             this.efektyToolStripMenuItem.Name = "efektyToolStripMenuItem";
             this.efektyToolStripMenuItem.Size = new System.Drawing.Size(51, 20);
             this.efektyToolStripMenuItem.Text = "Efekty";
@@ -390,28 +397,28 @@
             // usredniajacyToolStripMenuItem
             // 
             this.usredniajacyToolStripMenuItem.Name = "usredniajacyToolStripMenuItem";
-            this.usredniajacyToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.usredniajacyToolStripMenuItem.Size = new System.Drawing.Size(178, 22);
             this.usredniajacyToolStripMenuItem.Text = "Usredniajacy";
             this.usredniajacyToolStripMenuItem.Click += new System.EventHandler(this.usredniajacyToolStripMenuItem_Click);
             // 
             // usredniajacyMaskaToolStripMenuItem
             // 
             this.usredniajacyMaskaToolStripMenuItem.Name = "usredniajacyMaskaToolStripMenuItem";
-            this.usredniajacyMaskaToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.usredniajacyMaskaToolStripMenuItem.Size = new System.Drawing.Size(178, 22);
             this.usredniajacyMaskaToolStripMenuItem.Text = "Usredniajacy maska";
             this.usredniajacyMaskaToolStripMenuItem.Click += new System.EventHandler(this.usredniajacyMaskaToolStripMenuItem_Click);
             // 
             // gaussToolStripMenuItem
             // 
             this.gaussToolStripMenuItem.Name = "gaussToolStripMenuItem";
-            this.gaussToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.gaussToolStripMenuItem.Size = new System.Drawing.Size(178, 22);
             this.gaussToolStripMenuItem.Text = "Gauss";
             this.gaussToolStripMenuItem.Click += new System.EventHandler(this.gaussToolStripMenuItem_Click);
             // 
             // odszumianieToolStripMenuItem
             // 
             this.odszumianieToolStripMenuItem.Name = "odszumianieToolStripMenuItem";
-            this.odszumianieToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.odszumianieToolStripMenuItem.Size = new System.Drawing.Size(178, 22);
             this.odszumianieToolStripMenuItem.Text = "Medianowy";
             this.odszumianieToolStripMenuItem.Click += new System.EventHandler(this.medianowyToolStripMenuItem_Click);
             // 
@@ -438,6 +445,44 @@
             // 
             this.ścienianieToolStripMenuItem.Name = "ścienianieToolStripMenuItem";
             this.ścienianieToolStripMenuItem.Size = new System.Drawing.Size(32, 19);
+            // 
+            // zmianaHSVToolStripMenuItem
+            // 
+            this.zmianaHSVToolStripMenuItem.Name = "zmianaHSVToolStripMenuItem";
+            this.zmianaHSVToolStripMenuItem.Size = new System.Drawing.Size(201, 22);
+            this.zmianaHSVToolStripMenuItem.Text = "ZmianaHSV";
+            this.zmianaHSVToolStripMenuItem.Click += new System.EventHandler(this.zmianaHSVToolStripMenuItem_Click);
+            // 
+            // skalowanieToolStripMenuItem
+            // 
+            this.skalowanieToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.x2ToolStripMenuItem,
+            this.x25ToolStripMenuItem,
+            this.x3ToolStripMenuItem});
+            this.skalowanieToolStripMenuItem.Name = "skalowanieToolStripMenuItem";
+            this.skalowanieToolStripMenuItem.Size = new System.Drawing.Size(201, 22);
+            this.skalowanieToolStripMenuItem.Text = "Skalowanie";
+            // 
+            // x2ToolStripMenuItem
+            // 
+            this.x2ToolStripMenuItem.Name = "x2ToolStripMenuItem";
+            this.x2ToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.x2ToolStripMenuItem.Text = "x2";
+            this.x2ToolStripMenuItem.Click += new System.EventHandler(this.x2ToolStripMenuItem_Click);
+            // 
+            // x25ToolStripMenuItem
+            // 
+            this.x25ToolStripMenuItem.Name = "x25ToolStripMenuItem";
+            this.x25ToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.x25ToolStripMenuItem.Text = "x2.5";
+            this.x25ToolStripMenuItem.Click += new System.EventHandler(this.x25ToolStripMenuItem_Click);
+            // 
+            // x3ToolStripMenuItem
+            // 
+            this.x3ToolStripMenuItem.Name = "x3ToolStripMenuItem";
+            this.x3ToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.x3ToolStripMenuItem.Text = "x3";
+            this.x3ToolStripMenuItem.Click += new System.EventHandler(this.x3ToolStripMenuItem_Click);
             // 
             // Form1
             // 
@@ -505,6 +550,11 @@
         private System.Windows.Forms.ToolStripMenuItem usredniajacyMaskaToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem gaussToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem odszumianieToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem zmianaHSVToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem skalowanieToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem x2ToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem x25ToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem x3ToolStripMenuItem;
     }
 }
 
